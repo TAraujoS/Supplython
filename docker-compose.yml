@@ -1,0 +1,37 @@
+services:
+  supplython_db:
+    image: postgres
+    env_file: .env 
+    ports: 
+      - 5435:5432
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - supplythondata:/var/lib/postgresql/data
+
+  migrations:
+    build: .
+    command: python manage.py migrate
+    depends_on: 
+      supplython_db:
+        condition: service_healthy
+  
+  supplython_web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    stdin_open: true
+    tty: true
+    ports:
+      - 8000:8000
+    depends_on:
+      supplython_db:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+
+
+volumes:
+  supplythondata:
