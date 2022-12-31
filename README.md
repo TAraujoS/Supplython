@@ -1,1 +1,3 @@
-# supplython-api-m5
+# Supplython
+
+## 1- pip install -r requirements.txt
