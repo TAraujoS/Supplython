@@ -14,13 +14,13 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = Employee
         fields = [
             "id",
+            "name",
             "username",
             "email",
             "password",
+            "is_active",
             "is_manager",
-            "is_superuser",
         ]
-        read_only_fields = ["is_superuser"]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data: dict) -> Employee:
