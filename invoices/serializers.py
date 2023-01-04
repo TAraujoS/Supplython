@@ -13,7 +13,12 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "verified",
             "created_at",
             "validity",
+            "contract_id",
+            "supplier_id",
+            "employee_id",
         ]
+        
+        
 
         read_only_fields = [
             "id",
