@@ -21,9 +21,9 @@ class Invoice(models.Model):
         related_name="invoices",
     )
 
-    # employee = models.ForeignKey(
-    #     "employees.Employee",
-    #     on_delete=models.CASCADE,
-    #     related_name="invoices",
-    # )
+    employee = models.ForeignKey(
+        "employees.Employee",
+        on_delete=models.CASCADE,
+        related_name="invoices",
+    )
 
