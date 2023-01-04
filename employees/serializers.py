@@ -40,3 +40,5 @@ class EmployeeSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+
+    # def update(self, instance: Employee, validated_data: dict) -> Employee:
