@@ -21,7 +21,7 @@ class EmployeeView(generics.ListCreateAPIView):
 #     queryset = Employee.objects.all()
 
 
-class EmployeeDetailView(generics.RetrieveUpdateDestroyAPIView):
+class EmployeeDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 

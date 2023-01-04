@@ -23,4 +23,8 @@ class isAdminGet(permissions.BasePermission):
 
             return True
 
+        if request.method == "POST":
+
+            return True
+
         return False

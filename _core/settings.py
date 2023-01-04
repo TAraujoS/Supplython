@@ -52,7 +52,6 @@ THIRD_PARTY_APPS = ["rest_framework", "drf_spectacular"]
 MY_APPS = [
     "employees",
     "suppliers",
-    "invoices",
     "departments",
     "categories",
     "invoices",

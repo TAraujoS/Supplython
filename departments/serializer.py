@@ -4,15 +4,16 @@ from .models import Department
 
 
 class DepartmentSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(
+        validators=[
+            UniqueValidator(Department.objects.all(), "Name should be unique.")
+        ],
+    )
+
     class Meta:
         model = Department
-        fields = ["name", "budget"]
-        extra_kwargs = {
-            "name": {
-                "validators": [UniqueValidator(Department.objects.all())],
-            }
-        }
-        read_only_fields = ["pk"]
+        fields = ["id", "name", "budget"]
+        read_only_fields = ["id", "pk"]
 
     def create(self, validated_data):
         return Department.objects.create(**validated_data)
