@@ -13,7 +13,12 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "verified",
             "created_at",
             "validity",
+            "contract_id",
+            "supplier_id",
+            "employee_id",
         ]
+        
+        
 
         read_only_fields = [
             "id",
@@ -22,5 +27,3 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Invoice.objects.create(**validated_data)
-
-    
