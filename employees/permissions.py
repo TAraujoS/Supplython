@@ -1,7 +1,6 @@
 from rest_framework import permissions
 from rest_framework.views import Request, View
 from .models import Employee
-import ipdb
 
 
 class IsManager(permissions.BasePermission):
