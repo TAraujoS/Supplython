@@ -3,7 +3,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import generics
 from .serializers import InvoiceSerializer
 from .models import Invoice
-from ..employees.permissions import IsManager
+from employees.permissions import IsManager
 
 
 class InvoiceView(generics.ListCreateAPIView):

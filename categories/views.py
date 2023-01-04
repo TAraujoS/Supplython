@@ -2,7 +2,7 @@ from .models import Category
 from .serializers import CategorySerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import generics
-from ..employees.permissions import IsManager
+from employees.permissions import IsManager
 
 
 class CategoryView(generics.ListCreateAPIView):
