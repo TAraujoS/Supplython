@@ -5,7 +5,8 @@ from .models import Contract
 class ContractSerializer(serializers.Serializer):
     class Meta:
         model = Contract
-        fields = ["id", "duration", "budget"]
+        fields = ["id", "duration", "value"]
+        read_only_fields = ["id"]
 
     def create(self, validated_data):
         return Contract.objects.create(**validated_data)
@@ -16,11 +17,3 @@ class ContractSerializer(serializers.Serializer):
 
         instance.save()
         return instance
-
-
-# def validate_contract(self, contract):
-#     contract_already_exists = Contract.objects.filter(contract=contract).exists()
-
-#     if contract_already_exists:
-#         raise serializers.ValidationError(detail="contract already exists.")
-#     return contract
