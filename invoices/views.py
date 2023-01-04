@@ -7,6 +7,7 @@ from .models import Invoice
 
 class InvoiceView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
+    # permission_classes = []
 
     serializer_class = InvoiceSerializer
     queryset = Invoice.objects.all()
@@ -14,6 +15,7 @@ class InvoiceView(generics.ListCreateAPIView):
 
 class InvoiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
+    # permission_classes = []
 
     serializer_class = InvoiceSerializer
     queryset = Invoice.objects.all()

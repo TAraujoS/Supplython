@@ -10,4 +10,4 @@ class Invoice(models.Model):
     description = models.CharField(max_length=140)
     verified = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
-    validity = models.IntegerField()
+    validity = models.DateField()
