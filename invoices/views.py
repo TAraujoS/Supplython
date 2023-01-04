@@ -3,6 +3,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework import generics
 from .serializers import InvoiceSerializer
 from .models import Invoice
+from employees.permissions import IsManager
 
 
 class InvoiceView(generics.ListCreateAPIView):
@@ -15,7 +16,7 @@ class InvoiceView(generics.ListCreateAPIView):
 
 class InvoiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    # permission_classes = []
+    permission_classes = [IsManager]
 
     serializer_class = InvoiceSerializer
     queryset = Invoice.objects.all()

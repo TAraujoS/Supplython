@@ -22,5 +22,3 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         return Invoice.objects.create(**validated_data)
-
-    

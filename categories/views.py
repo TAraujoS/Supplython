@@ -1,14 +1,13 @@
 from .models import Category
 from .serializers import CategorySerializer
-
-# from .permissions import isManager
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import generics
+from employees.permissions import IsManager
 
 
 class CategoryView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
-    # permission_classes = [isManager]
+    permission_classes = [IsManager]
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
@@ -20,7 +19,7 @@ class CategoryView(generics.ListCreateAPIView):
 
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    # permission_classes = [isManager]
+    permission_classes = [IsManager]
 
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
