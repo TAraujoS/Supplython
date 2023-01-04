@@ -1,7 +1,7 @@
 from .models import Employee
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .serializers import EmployeeSerializer
-from .permissions import isManager, isAdminGet
+from .permissions import IsManager, isAdminGet
 from rest_framework import generics
 
 
@@ -23,7 +23,7 @@ class EmployeeView(generics.ListCreateAPIView):
 
 class EmployeeDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classes = [isManager]
+    permission_classes = [IsManager]
 
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer

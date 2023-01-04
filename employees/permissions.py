@@ -4,7 +4,7 @@ from .models import Employee
 import ipdb
 
 
-class isManager(permissions.BasePermission):
+class IsManager(permissions.BasePermission):
     def has_object_permission(
         self, request: Request, view: View, obj: Employee
     ) -> bool:
