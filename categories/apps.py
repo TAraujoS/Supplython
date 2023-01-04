@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class DepartamentConfig(AppConfig):
+class CategoriesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'departament'
+    name = 'categories'

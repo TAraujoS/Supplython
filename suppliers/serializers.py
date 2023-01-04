@@ -2,39 +2,32 @@ from rest_framework import serializers
 from .models import Supplier
 from rest_framework.validators import UniqueValidator
 
+
 class SupplierSerializer(serializers.ModelSerializer):
     name = serializers.CharField(
-        validators=[
-            UniqueValidator(Supplier
-            .objects.all(), "Name should be unique.")
-        ]
+        validators=[UniqueValidator(Supplier.objects.all(), "Name should be unique.")]
     )
-    
+
     email = serializers.EmailField(
-        validators=[
-            UniqueValidator(Supplier
-            .objects.all(), "E-mail should be unique.")
-        ]
+        validators=[UniqueValidator(Supplier.objects.all(), "E-mail should be unique.")]
     )
 
     tel = serializers.CharField(
         validators=[
-            UniqueValidator(Supplier
-            .objects.all(), "Contact should be unique.")
+            UniqueValidator(Supplier.objects.all(), "Contact should be unique.")
         ]
     )
 
     class Meta:
-        model=Supplier
-        fields=[
+        model = Supplier
+        fields = [
             "id",
             "name",
             "email",
-            "tel"
+            "tel",
             "cnpj",
         ]
 
-    
     def create(self, validated_data):
         return Supplier.objects.create(**validated_data)
 
