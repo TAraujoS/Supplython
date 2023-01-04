@@ -17,3 +17,5 @@ class ContractSerializer(serializers.Serializer):
 
         instance.save()
         return instance
+<<<<<<< HEAD
+=======
