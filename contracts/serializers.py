@@ -24,3 +24,4 @@ class ContractSerializer(serializers.Serializer):
 #     if contract_already_exists:
 #         raise serializers.ValidationError(detail="contract already exists.")
 #     return contract
+
