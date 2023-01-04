@@ -53,7 +53,8 @@ MY_APPS = [
     "employees",
     "suppliers",
     "invoices",
-    "departament" "categories",
+    "departments",
+    "categories",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
