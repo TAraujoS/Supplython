@@ -55,7 +55,6 @@ MY_APPS = [
     "invoices",
     "departments",
     "categories",
-    "invoices",
     "contracts",
 ]
 
