@@ -5,7 +5,7 @@ from .models import Contract
 class ContractSerializer(serializers.Serializer):
 
     id = id = serializers.CharField(read_only=True)
-    duration = serializers.IntegerField(read_only=True)
+    duration = serializers.DateField(read_only=True)
     value = serializers.DecimalField(max=10)
 
     def create(self, validated_data):

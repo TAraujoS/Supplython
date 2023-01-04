@@ -1,39 +1,25 @@
 from django.shortcuts import render
-from rest_framework.views import APIView, Response, status
-from django.shortcuts import get_object_or_404
+from rest_framework import generics
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from .permissions import IsManager
 from .models import Contract
 from .serializers import ContractSerializer
 
+    class ContractView(generics.ListCreateAPIView):
+        serializer_class = ContractSerializer
+        queryset = Contract.objects.all()
 
-class ContractView(APIView):
+    #class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
+        """
+        APIView
+        has_object_permission -> self.check_object_permission
+"""
 
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsManager]
+    #authentication_classes = [JWTAuthentication]
+    # AND
+    #permission_classe = [IsManager]
 
-    def get(self, request):
-        contract = Contract.objects.all()
-        serializer = ContractSerializer(contract, many=True)
-        return self.get_paginated_response(serializer.data)
+    #serializer_class = ContractSerializer
+    #queryset = Contract.objects.all()
 
-    def post(self, request):
-        contract = ContractSerializer(data=request.data)
-        contract.is_valid(raise_exception=True)
-        contract.save(user=request.user)
-
-        return Response(contract.data, status.HTTP_201_CREATED)
-
-
-class ContractDetailView(APIView):
-    authentication_classes = [JWTAuthentication]
-    permission_classes = [IsManager]
-
-    def get(self, request, contract_id):
-        contract = get_object_or_404(Contract, id=contract_id)
-        serializer = ContractSerializer(contract)
-        return Response(serializer.data, status.HTTP_200_OK)
-
-    def delete(self, request, contract_id):
-        contract = get_object_or_404(Contract, id=contract_id)
-        contract.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    #lookup_url_kwarg = "contract_id"
