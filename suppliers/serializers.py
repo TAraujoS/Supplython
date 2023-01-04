@@ -28,6 +28,8 @@ class SupplierSerializer(serializers.ModelSerializer):
             "cnpj",
         ]
 
+        read_only_fields = ["id"]
+
     def create(self, validated_data):
         return Supplier.objects.create(**validated_data)
 
