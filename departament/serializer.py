@@ -1,12 +1,16 @@
 from rest_framework import serializers
-
-
+from rest_framework.validators import UniqueValidator
 from .models import Departament
 
 class DepartamentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Departament
-        fields = "__all__"
+        fields = ["name", "budget"]
+        extra_kwargs = {
+            "name":{
+                "validators": [UniqueValidator(Departament.objects.all())],
+            }
+        }
         read_only_fields = ["pk"]
 
     def create(self,validated_data):
