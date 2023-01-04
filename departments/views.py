@@ -2,7 +2,7 @@ from rest_framework import generics
 from .serializer import DepartmentSerializer
 from .models import Department
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from ..employees.permissions import IsManager
+from employees.permissions import IsManager
 
 
 class DepartmentView(generics.ListCreateAPIView):

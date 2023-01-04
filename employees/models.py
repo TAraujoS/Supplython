@@ -3,8 +3,12 @@ from django.contrib.auth.models import AbstractUser
 
 
 class Employee(AbstractUser):
-    email = models.EmailField(max_length=127, unique=True)
+    name = models.CharField(max_length=50, default="")
+    username = models.CharField(max_length=50, unique=True)
+    email = models.EmailField(max_length=50, unique=True)
+    password = models.CharField(max_length=100)
     is_manager = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=True)
 
     # department = models.ForeignKey(
     #     "suppliers.Department",
