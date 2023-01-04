@@ -3,14 +3,11 @@ from rest_framework.views import Request, View
 from .models import Employee
 
 
-class isAdminOrAccountOwner(permissions.BasePermission):
-    def has_object_permission(
-        self, request: Request, view: View, obj: Employee
-    ) -> bool:
+class IsManager(permissions.BasePermission):
+    def has_object_permission(self, request: Request, view: View, obj) -> bool:
 
-        if request.employee.is_authenticated and (
-            request.employee == obj or request.employee.is_superuser
-        ):
+        if request.user.is_authenticated and request.user.is_manager:
+
             return True
 
         return False
