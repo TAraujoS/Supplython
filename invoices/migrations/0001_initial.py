@@ -10,25 +10,54 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('contracts', '0001_initial'),
+        ("contracts", "0001_initial"),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('suppliers', '0001_initial'),
+        ("suppliers", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Invoice',
+            name="Invoice",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('invoice_number', models.CharField(max_length=10)),
-                ('value', models.DecimalField(decimal_places=2, max_digits=8)),
-                ('description', models.CharField(max_length=140)),
-                ('verified', models.BooleanField()),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('validity', models.DateField()),
-                ('contract', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoices', to='contracts.contract')),
-                ('employee', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoices', to=settings.AUTH_USER_MODEL)),
-                ('supplier', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='invoices', to='suppliers.supplier')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("invoice_number", models.CharField(max_length=10)),
+                ("value", models.DecimalField(decimal_places=2, max_digits=8)),
+                ("description", models.CharField(max_length=140)),
+                ("verified", models.BooleanField()),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("validity", models.DateField()),
+                (
+                    "contract",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="invoices",
+                        to="contracts.contract",
+                    ),
+                ),
+                (
+                    "employee",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="invoices",
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
+                (
+                    "supplier",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="invoices",
+                        to="suppliers.supplier",
+                    ),
+                ),
             ],
         ),
     ]
