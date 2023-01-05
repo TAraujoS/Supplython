@@ -3,7 +3,7 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from .models import Contract
 from categories.models import Category
 from suppliers.models import Supplier
-from .serializers import ContractSerializer
+from .serializers import ContractSerializer, DetailedContractSerializer
 from employees.permissions import IsManager
 from django.shortcuts import get_object_or_404
 
@@ -17,8 +17,9 @@ class ContractView(generics.ListCreateAPIView):
 
 
 def perform_create(self, serializer):
-    categories = get_object_or_404(Category, pk=self.kwargs["pk"])
-    return serializer.save(categories=categories)
+    categories = get_object_or_404(Category, id=self.request.data["category_id"])
+    supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
+    return serializer.save(categories=categories, supplier=supplier)
 
 
 class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
@@ -29,6 +30,10 @@ class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = ContractSerializer
     queryset = Contract.objects.all()
 
-    def perform_create(self, serializer):
-        supplier = get_object_or_404(Supplier, pk=self.kwargs["pk"])
-        return serializer.save(supplier=supplier)
+    def get_serializer_class(self):
+        if self.request.method == "GET":
+            return DetailedContractSerializer
+
+        return ContractSerializer
+
+    queryset = Contract.objects.all()
