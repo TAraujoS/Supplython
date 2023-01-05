@@ -8,16 +8,29 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('suppliers', '0001_initial'),
+        ("suppliers", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=50, unique=True)),
-                ('supplier', models.ManyToManyField(related_name='categories', to='suppliers.supplier')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=50, unique=True)),
+                (
+                    "supplier",
+                    models.ManyToManyField(
+                        related_name="categories", to="suppliers.supplier"
+                    ),
+                ),
             ],
         ),
     ]
