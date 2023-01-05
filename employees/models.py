@@ -7,12 +7,12 @@ class Employee(AbstractUser):
     username = models.CharField(max_length=50, unique=True)
     email = models.EmailField(max_length=50, unique=True)
     password = models.CharField(max_length=100)
-    is_manager = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False, null=True)
     is_active = models.BooleanField(default=True)
     department = models.ForeignKey(
         "departments.Department",
         on_delete=models.CASCADE,
-        related_name="employee",
+        related_name="employees",
         null=True,
     )
 

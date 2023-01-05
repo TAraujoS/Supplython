@@ -10,6 +10,8 @@ class EmployeeSerializer(serializers.ModelSerializer):
         ]
     )
 
+    is_manager = serializers.BooleanField(source="is_superuser")
+
     class Meta:
         model = Employee
         fields = [
@@ -29,7 +31,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data: dict) -> Employee:
 
-        if validated_data["is_manager"]:
+        if validated_data["is_superuser"]:
             employee = Employee.objects.create_superuser(**validated_data)
             return employee
 

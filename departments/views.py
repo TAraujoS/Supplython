@@ -7,7 +7,7 @@ from employees.permissions import IsManager
 
 class DepartmentView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classe = [IsManager]
+    permission_classes = [IsManager]
 
     serializer_class = DepartmentSerializer
     queryset = Department.objects.all()
@@ -15,9 +15,7 @@ class DepartmentView(generics.ListCreateAPIView):
 
 class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
-    permission_classe = [IsManager]
+    permission_classes = [IsManager]
 
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-
-    lookup_url_kwarg = "pk"

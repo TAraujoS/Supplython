@@ -13,17 +13,14 @@ class EmployeeView(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
 
 
-# class EmployeeViewGet(generics.ListAPIView):
-#     authentication_classes = [JWTAuthentication]
-#     permission_classes = [isAdminGet]
-
-#     serializer_class = EmployeeSerializer
-#     queryset = Employee.objects.all()
-
-
 class EmployeeDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
     queryset = Employee.objects.all()
     serializer_class = EmployeeSerializer
+
+
+# def perform_update(self, serializer):
+#     instance = serializer.save()
+#     send_email_confirmation(user=self.request.user, modified=instance)
