@@ -20,8 +20,11 @@ class EmployeeSerializer(serializers.ModelSerializer):
             "password",
             "is_active",
             "is_manager",
+            "department_id",
         ]
         extra_kwargs = {"password": {"write_only": True}}
+
+        read_only_fields = ["department_id"]
 
     def create(self, validated_data: dict) -> Employee:
 
@@ -40,5 +43,3 @@ class EmployeeSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
-
-    # def update(self, instance: Employee, validated_data: dict) -> Employee:
