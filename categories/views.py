@@ -3,6 +3,9 @@ from .serializers import CategorySerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import generics
 from employees.permissions import IsManager
+from suppliers.models import Supplier
+from django.shortcuts import get_object_or_404
+import ipdb
 
 
 class CategoryView(generics.ListCreateAPIView):
@@ -13,7 +16,7 @@ class CategoryView(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
 
     # def perform_create(self, serializer):
-    #     supplier = get_object_or_404(Supplier, pk=self.kwargs["pk"])
+    #     supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
     #     return serializer.save(supplier=supplier)
 
 
