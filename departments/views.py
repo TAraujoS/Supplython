@@ -19,5 +19,3 @@ class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
-
-    lookup_url_kwarg = "pk"
