@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import Employee
 from rest_framework.validators import UniqueValidator
 from departments.models import Department
+from departments.serializer import DepartmentSerializer
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -39,6 +40,36 @@ class EmployeeSerializer(serializers.ModelSerializer):
         employee = Employee.objects.create_user(**validated_data)
 
         return employee
+
+
+class DetailEmployeeSerializer(serializers.ModelSerializer):
+    is_manager = serializers.BooleanField(source="is_superuser")
+    department_id = serializers.IntegerField()
+    department = DepartmentSerializer(read_only=True)
+
+    class Meta:
+        model = Employee
+        fields = [
+            "id",
+            "name",
+            "username",
+            "email",
+            "password",
+            "is_active",
+            "is_manager",
+            "department_id",
+            "department",
+        ]
+
+        extra_kwargs = {
+            "password": {"write_only": True},
+            "department_id": {"write_only": True},
+        }
+
+        read_only_fields = [
+            "id",
+            "department",
+        ]
 
     def update(self, instance: Employee, validated_data: dict) -> Employee:
 
