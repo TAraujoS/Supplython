@@ -2,10 +2,16 @@ from rest_framework import serializers
 from .models import Contract
 
 
-class ContractSerializer(serializers.Serializer):
+class ContractSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contract
-        fields = ["id", "duration", "value"]
+        fields = [
+            "id",
+            "duration",
+            "value",
+            "category",
+            "supplier"
+        ]
         read_only_fields = ["id"]
 
     def create(self, validated_data):
