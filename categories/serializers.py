@@ -6,13 +6,13 @@ from .models import Category
 
 
 class CategorySerializer(serializers.ModelSerializer):
-    # contract = ContractSerializer(read_only=True, many=True)
+    # contract = ContractSerializer(read_only=True)
     # supplier = SupplierSerializer(read_only=True)
 
     class Meta:
         model = Category
-        fields = ["id", "name"]
-        read_only_fields = ["id"]
+        fields = ["id", "name", "supplier_id"]
+        read_only_fields = ["id", "supplier_id"]
 
     def create(self, validated_data):
         return Category.objects.create(**validated_data)
