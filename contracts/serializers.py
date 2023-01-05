@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import Contract
 
+from suppliers.serializers import SupplierSerializer
+from categories.serializers import CategorySerializer
+
 
 class ContractSerializer(serializers.ModelSerializer):
     class Meta:
@@ -9,6 +12,8 @@ class ContractSerializer(serializers.ModelSerializer):
             "id",
             "duration",
             "value",
+            "supplier_id",
+            "category_id",
         ]
         read_only_fields = ["id"]
 
@@ -21,3 +26,20 @@ class ContractSerializer(serializers.ModelSerializer):
 
         instance.save()
         return instance
+
+
+class DetailedContractSerializer(serializers.ModelSerializer):
+    category = CategorySerializer(read_only=True)
+    supplier = SupplierSerializer(read_only=True)
+
+    class Meta:
+        model = Contract
+        fields = [
+            "id",
+            "duration",
+            "value",
+            "category",
+            "supplier",
+        ]
+
+        read_only_fields = ["id", "duration", "value", "category", "supplier"]
