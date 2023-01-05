@@ -8,7 +8,6 @@ from contracts.models import Contract
 from employees.models import Employee
 from suppliers.models import Supplier
 from django.shortcuts import get_object_or_404
-import ipdb
 
 
 class InvoiceView(generics.ListCreateAPIView):
