@@ -20,5 +20,3 @@ class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = ContractSerializer
     queryset = Contract.objects.all()
-
-    # lookup_url_kwarg = "contract_id"
