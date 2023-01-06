@@ -41,15 +41,23 @@ class ContractView(generics.ListCreateAPIView):
         return serializer.save(category=categories, supplier=supplier)
 
 
-get = (
-    extend_schema(
+@extend_schema_view(
+    get=extend_schema(
         description="Route for an authenticated and manager to list a specific contract by id.",
         summary="List contract",
         tags=["Contracts"],
     ),
+    patch=extend_schema(
+        description="Route for an authenticated and manager to update a specific contract by id.",
+        summary="Update contract",
+        tags=["Contracts"],
+    ),
+    delete=extend_schema(
+        description="Route for an authenticated and manager to delete a contract by id.",
+        summary="Delete contract.",
+        tags=["Contracts"],
+    ),
 )
-
-
 class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     authentication_classes = [JWTAuthentication]
