@@ -14,13 +14,13 @@ from employees.permissions import IsManager
 
 @extend_schema_view(
     post=extend_schema(
-        description="Route for an authenticated user to create the invoice posting.",
-        summary="Create posting of invoices",
+        description="Route to create Invoice.",
+        summary="Create Invoice",
         tags=["Invoices"],
     ),
     get=extend_schema(
-        description="Route for an authenticated user to list all invoices.",
-        summary="List all posted invoices.",
+        description="Route to list all Invoices.",
+        summary="List all Invoices.",
         tags=["Invoices"],
     ),
 )
@@ -60,18 +60,18 @@ class InvoiceView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        description="Route for an authenticated and superuser to list a specific invoice by id.",
-        summary="List invoice",
+        description="Route to list Invoice by id. Route only for managers",
+        summary="List Invoice by id",
         tags=["Invoices"],
     ),
     patch=extend_schema(
-        description="Route for an authenticated and superuser to update a specific invoice by id.",
-        summary="Update invoice",
+        description="Route to update Invoice by id. Route only for managers",
+        summary="Update Invoice",
         tags=["Invoices"],
     ),
     delete=extend_schema(
-        description="Route for an authenticated and superuser to delete a specific invoice by id.",
-        summary="Delete invoice.",
+        description="Route to delete Invoice by id. Route only for managers",
+        summary="Delete Invoice.",
         tags=["Invoices"],
     ),
 )
