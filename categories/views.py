@@ -5,10 +5,21 @@ from rest_framework import generics
 from employees.permissions import IsManager
 from suppliers.models import Supplier
 from django.shortcuts import get_object_or_404
-import ipdb
-from rest_framework.views import APIView, Response, Request, status
+from drf_spectacular.utils import extend_schema_view, extend_schema
 
 
+@extend_schema_view(
+    post=extend_schema(
+        description="Route to create Categories. Route only for managers",
+        summary="Create Categories",
+        tags=["Categories"],
+    ),
+    get=extend_schema(
+        description="Route to list all Categories. Route only for managers",
+        summary="List all Categories",
+        tags=["Categories"],
+    ),
+)
 class CategoryView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
@@ -22,6 +33,23 @@ class CategoryView(generics.ListCreateAPIView):
         return serializer.save(supplier=supplier)
 
 
+@extend_schema_view(
+    get=extend_schema(
+        description="Route to list Category by id. Route only for managers",
+        summary="List Category by id",
+        tags=["Categories"],
+    ),
+    patch=extend_schema(
+        description="Route to update Category. Route only for managers",
+        summary="Update Category",
+        tags=["Categories"],
+    ),
+    delete=extend_schema(
+        description="Route to delete Category by id. Route only for managers",
+        summary="Delete Category",
+        tags=["Categories"],
+    ),
+)
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
