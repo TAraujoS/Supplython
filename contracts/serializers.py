@@ -1,7 +1,5 @@
 from rest_framework import serializers
 from .models import Contract
-
-from suppliers.serializers import SupplierSerializer
 from categories.serializers import CategorySerializer
 
 
@@ -30,7 +28,6 @@ class ContractSerializer(serializers.ModelSerializer):
 
 class DetailedContractSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
-    supplier = SupplierSerializer(read_only=True)
 
     class Meta:
         model = Contract
@@ -39,7 +36,6 @@ class DetailedContractSerializer(serializers.ModelSerializer):
             "duration",
             "value",
             "category",
-            "supplier",
         ]
 
-        read_only_fields = ["id", "duration", "value", "category", "supplier"]
+        read_only_fields = ["id", "duration", "value", "category"]
