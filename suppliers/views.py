@@ -35,15 +35,20 @@ class SupplierView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        description="Route for a manager to list a single supplier",
+        description="Route for a manager authenticated to list a single supplier",
         summary="List supplier",
         tags=["Suppliers"],
     ),
     patch=extend_schema(
-        description="Route for a manager to update a supplier",
+        description="Route for a manager authenticated to update a supplier by id",
         summary="Update supplier",
         tags=["Suppliers"],
     ),
+    delete=extend_schema(
+        description="Route for a manager authenticated to delete a supplier by id",
+        summary="Delete supplier",
+        tags=["Suppliers"],
+    )
 )
 
     
@@ -51,10 +56,4 @@ class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
-    def get_serializer_class(self):
-        if self.request.method == "GET":
-            return SupplierDetailSerializer
-
-        return SupplierSerializer
-
-    queryset = Supplier.objects.all()
+    serializer_class = SupplierDetailSerializer
