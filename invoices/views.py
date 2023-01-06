@@ -8,8 +8,21 @@ from suppliers.models import Supplier
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from .models import Invoice
+from drf_spectacular.utils import extend_schema_view, extend_schema
 
 
+@extend_schema_view(
+    post=extend_schema(
+        description="Route for an authenticated user to create the invoice posting.",
+        summary="Create posting of invoices",
+        tags=["Invoices"],
+    ),
+    get=extend_schema(
+        description="Route for an authenticated user to list all invoices.",
+        summary="List all posted invoices.",
+        tags=["Invoices"],
+    ),
+)
 class InvoiceView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
 
@@ -44,6 +57,23 @@ class InvoiceView(generics.ListCreateAPIView):
         )
 
 
+@extend_schema_view(
+    get=extend_schema(
+        description="Route for an authenticated and superuser to list a specific invoice by id.",
+        summary="List invoice",
+        tags=["Invoices"],
+    ),
+    patch=extend_schema(
+        description="Route for an authenticated and superuser to update a specific invoice by id.",
+        summary="Update invoice",
+        tags=["Invoices"],
+    ),
+    delete=extend_schema(
+        description="Route for an authenticated and superuser to delete a specific invoice by id.",
+        summary="Delete invoice.",
+        tags=["Invoices"],
+    ),
+)
 class InvoiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
