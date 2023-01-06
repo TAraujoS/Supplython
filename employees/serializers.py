@@ -86,7 +86,6 @@ class DetailEmployeeSerializer(serializers.ModelSerializer):
     def get_fields(self, *args, **kwargs):
 
         fields = super().get_fields(*args, **kwargs)
-        print(fields)
         request = self.context.get("request", None)
         if request and getattr(request, "method", None) == "POST":
             fields["department_id"].required = False

@@ -6,6 +6,7 @@ from employees.permissions import IsManager
 from suppliers.models import Supplier
 from django.shortcuts import get_object_or_404
 import ipdb
+from rest_framework.views import APIView, Response, Request, status
 
 
 class CategoryView(generics.ListCreateAPIView):
@@ -15,9 +16,14 @@ class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    def perform_create(self, serializer):
-        supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
-        return serializer.save(supplier=supplier)
+    def post(self, req: Request) -> Response:
+        serializer = CategorySerializer(data=req.data)
+
+        serializer.is_valid(raise_exception=True)
+
+        serializer.save()
+
+        return Response(serializer.data, status.HTTP_201_CREATED)
 
 
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
