@@ -74,6 +74,7 @@ class InvoiceView(generics.ListCreateAPIView):
         summary="Delete Invoice.",
         tags=["Invoices"],
     ),
+    put=extend_schema(exclude=True),
 )
 class InvoiceDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]

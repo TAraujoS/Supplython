@@ -50,6 +50,7 @@ class DepartmentView(generics.ListCreateAPIView):
         summary="Delete Department",
         tags=["Departments"],
     ),
+    put=extend_schema(exclude=True),
 )
 class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]

@@ -50,6 +50,7 @@ class CategoryView(generics.ListCreateAPIView):
         summary="Delete Category",
         tags=["Categories"],
     ),
+    put=extend_schema(exclude=True),
 )
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]

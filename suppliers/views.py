@@ -48,6 +48,7 @@ class SupplierView(generics.ListCreateAPIView):
         summary="Delete Supplier",
         tags=["Suppliers"],
     ),
+    put=extend_schema(exclude=True),
 )
 class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]

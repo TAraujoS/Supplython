@@ -56,6 +56,7 @@ class ContractView(generics.ListCreateAPIView):
         summary="Delete Contract.",
         tags=["Contracts"],
     ),
+    put=extend_schema(exclude=True),
 )
 class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
 

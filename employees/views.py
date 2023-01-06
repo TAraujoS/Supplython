@@ -43,6 +43,7 @@ class EmployeeView(generics.ListCreateAPIView):
         summary="Update Employee",
         tags=["Employees"],
     ),
+    put=extend_schema(exclude=True),
 )
 class EmployeeDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [JWTAuthentication]
