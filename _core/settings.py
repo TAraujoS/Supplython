@@ -47,12 +47,18 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["rest_framework", "drf_spectacular"]
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "drf_spectacular",
+]
 
 MY_APPS = [
     "employees",
     "suppliers",
+    "departments",
+    "categories",
     "invoices",
+    "contracts",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + MY_APPS
@@ -178,7 +184,7 @@ AUTH_USER_MODEL = "employees.Employee"
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Supplython",
-    "DESCRIPTION": "API Supplython description",
+    "DESCRIPTION": "API Supplython: This application is a cost management system for small companies, based on the needs of the Supply Chain area. It has CRUD of employees, suppliers, invoices, departments, categories and contracts.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
