@@ -73,37 +73,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Category'
           description: ''
-    put:
-      operationId: api_categories_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Category'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Category'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Category'
-        required: true
-      security:
-      - jwtAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Category'
-          description: ''
     patch:
       operationId: api_categories_partial_update
       description: Route to update Category. Route only for managers
@@ -223,38 +192,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/DetailedContract'
           description: ''
-    put:
-      operationId: api_contract_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Contract'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Contract'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Contract'
-        required: true
-      security:
-      - jwtAuth: []
-      - {}
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Contract'
-          description: ''
     patch:
       operationId: api_contract_partial_update
       description: Route to update Contract by id. Route only for managers
@@ -373,37 +310,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Department'
           description: ''
-    put:
-      operationId: api_departments_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Department'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Department'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Department'
-        required: true
-      security:
-      - jwtAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Department'
-          description: ''
     patch:
       operationId: api_departments_partial_update
       description: Route to update a Department. Route only for managers
@@ -511,37 +417,6 @@ paths:
         required: true
       tags:
       - Employees
-      security:
-      - jwtAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/DetailEmployee'
-          description: ''
-    put:
-      operationId: api_employees_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/DetailEmployee'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/DetailEmployee'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/DetailEmployee'
-        required: true
       security:
       - jwtAuth: []
       responses:
@@ -679,37 +554,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/DetailedInvoice'
           description: ''
-    put:
-      operationId: api_invoices_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Invoice'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/Invoice'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/Invoice'
-        required: true
-      security:
-      - jwtAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/Invoice'
-          description: ''
     patch:
       operationId: api_invoices_partial_update
       description: Route to update Invoice by id. Route only for managers
@@ -817,36 +661,6 @@ paths:
         required: true
       tags:
       - Suppliers
-      security:
-      - jwtAuth: []
-      responses:
-        '200':
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/SupplierDetail'
-          description: ''
-    put:
-      operationId: api_suppliers_update
-      parameters:
-      - in: path
-        name: id
-        schema:
-          type: integer
-        required: true
-      tags:
-      - api
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/SupplierDetail'
-          application/x-www-form-urlencoded:
-            schema:
-              $ref: '#/components/schemas/SupplierDetail'
-          multipart/form-data:
-            schema:
-              $ref: '#/components/schemas/SupplierDetail'
       security:
       - jwtAuth: []
       responses:
