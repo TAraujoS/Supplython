@@ -1,6 +1,8 @@
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from django.shortcuts import get_object_or_404
+from drf_spectacular.utils import extend_schema_view, extend_schema
+
 
 from .models import Contract
 from categories.models import Category
@@ -9,13 +11,25 @@ from .serializers import ContractSerializer, DetailedContractSerializer
 from employees.permissions import IsManager
 
 
+@extend_schema_view(
+    post=extend_schema(
+        description="Route to create Contracts. Route only for managers.",
+        summary="Create contract",
+        tags=["Contracts"],
+    ),
+    get=extend_schema(
+        description="Route for an authenticated user to list all contracts.",
+        summary="List all contracts.",
+        tags=["Contracts"],
+    ),
+)
 class ContractView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classe = [IsManager]
 
     queryset = Contract.objects.all()
 
-    def get_serializer_class(self):
+    #def get_serializer_class(self):
         if self.request.method == "GET":
             return DetailedContractSerializer
 
@@ -27,6 +41,23 @@ class ContractView(generics.ListCreateAPIView):
         return serializer.save(category=categories, supplier=supplier)
 
 
+@extend_schema_view(
+    get=extend_schema(
+        description="Route for an authenticated and manager to list a specific contract by id.",
+        summary="List contract",
+        tags=["Contracts"],
+    ),
+    patch=extend_schema(
+        description="Route for an authenticated and manager to update a specific contract by id.",
+        summary="Update contract",
+        tags=["Contracts"],
+    ),
+    delete=extend_schema(
+        description="Route for an authenticated and manager to delete a contract by id.",
+        summary="Delete contract.",
+        tags=["Contracts"],
+    ),
+)
 class ContractDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     authentication_classes = [JWTAuthentication]
