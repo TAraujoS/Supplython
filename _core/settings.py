@@ -47,7 +47,10 @@ DJANGO_APPS = [
     "django.contrib.staticfiles",
 ]
 
-THIRD_PARTY_APPS = ["rest_framework", "drf_spectacular"]
+THIRD_PARTY_APPS = [
+    "rest_framework",
+    "drf_spectacular",
+]
 
 MY_APPS = [
     "employees",
@@ -180,7 +183,7 @@ AUTH_USER_MODEL = "employees.Employee"
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Supplython",
-    "DESCRIPTION": "API Supplython description",
+    "DESCRIPTION": "API Supplython",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
