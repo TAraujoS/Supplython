@@ -1,9 +1,10 @@
-from .models import Supplier
-from .serializers import SupplierSerializer, SupplierDetailSerializer
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from employees.permissions import IsManager
 from drf_spectacular.utils import extend_schema_view, extend_schema
+
+from .models import Supplier
+from .serializers import SupplierSerializer, SupplierDetailSerializer
+from employees.permissions import IsManager
 
 
 @extend_schema_view(
@@ -18,7 +19,6 @@ from drf_spectacular.utils import extend_schema_view, extend_schema
         tags=["Suppliers"],
     ),
 )
-
 class SupplierView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
@@ -30,7 +30,6 @@ class SupplierView(generics.ListCreateAPIView):
         return SupplierSerializer
 
     queryset = Supplier.objects.all()
-
 
 
 @extend_schema_view(
@@ -48,10 +47,8 @@ class SupplierView(generics.ListCreateAPIView):
         description="Route for a manager authenticated to delete a supplier by id",
         summary="Delete supplier",
         tags=["Suppliers"],
-    )
+    ),
 )
-
-    
 class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]

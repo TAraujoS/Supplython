@@ -34,27 +34,21 @@ class SupplierSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         return Supplier.objects.create(**validated_data)
 
-    def update(self, instance: Supplier, validated_data):
-        for key, value in validated_data.items():
-            setattr(instance, key, value)
-
-        instance.save()
-
-        return instance
-
 
 class SupplierDetailSerializer(serializers.ModelSerializer):
     contract = ContractSerializer(read_only=True, many=True)
 
     class Meta:
         model = Supplier
-        fields = [
-            "id",
-            "name",
-            "email",
-            "tel",
-            "cnpj",
-            "contract"
-        ]
+        fields = ["id", "name", "email", "tel", "cnpj"]
 
-        read_only_fields = ["id", "name", "email", "tel", "cnpj", "contract"]
+        read_only_fields = ["id", "name", "email", "tel", "cnpj"]
+
+        def update(self, instance: Supplier, validated_data):
+
+            for key, value in validated_data.items():
+                setattr(instance, key, value)
+
+            instance.save()
+
+            return instance

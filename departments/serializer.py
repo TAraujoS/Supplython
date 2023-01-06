@@ -11,6 +11,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
         ],
     )
     supplier = SupplierSerializer(read_only=True, many=True)
+
     class Meta:
         model = Department
         fields = ["id", "name", "budget", "supplier"]
@@ -20,7 +21,7 @@ class DepartmentSerializer(serializers.ModelSerializer):
         supplier_list = validated_data.pop("supplier")
 
         department = Department.objects.create(**validated_data)
-        
+
         department.supplier.add(supplier_list)
 
         return department

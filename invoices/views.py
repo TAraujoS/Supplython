@@ -1,14 +1,15 @@
+from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
-from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
+from rest_framework.exceptions import ValidationError
 from django.shortcuts import get_object_or_404
-from employees.permissions import IsManager
+from drf_spectacular.utils import extend_schema_view, extend_schema
+
+from .models import Invoice
+from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
 from contracts.models import Contract
 from employees.models import Employee
 from suppliers.models import Supplier
-from rest_framework import generics
-from rest_framework.exceptions import ValidationError
-from .models import Invoice
-from drf_spectacular.utils import extend_schema_view, extend_schema
+from employees.permissions import IsManager
 
 
 @extend_schema_view(

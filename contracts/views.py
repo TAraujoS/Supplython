@@ -1,11 +1,12 @@
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
+from django.shortcuts import get_object_or_404
+
 from .models import Contract
 from categories.models import Category
 from suppliers.models import Supplier
 from .serializers import ContractSerializer, DetailedContractSerializer
 from employees.permissions import IsManager
-from django.shortcuts import get_object_or_404
 
 
 class ContractView(generics.ListCreateAPIView):
