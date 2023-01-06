@@ -184,7 +184,7 @@ AUTH_USER_MODEL = "employees.Employee"
 
 SPECTACULAR_SETTINGS = {
     "TITLE": "Supplython",
-    "DESCRIPTION": "API Supplython",
+    "DESCRIPTION": "API Supplython: This application is a cost management system for small companies, based on the needs of the Supply Chain area. It has CRUD of employees, suppliers, invoices, departments, categories and contracts.",
     "VERSION": "1.0.0",
     "SERVE_INCLUDE_SCHEMA": False,
 }
