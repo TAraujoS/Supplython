@@ -35,6 +35,26 @@ class DepartmentView(generics.ListCreateAPIView):
         return serializer.save(supplier=supplier)
 
 
+
+@extend_schema_view(
+    get=extend_schema(
+        description="Route to list a single Department",
+        summary="List Department",
+        tags=["Departments"],
+    ),
+    patch=extend_schema(
+        description="Route to update a Department. Route only for managers",
+        summary="Update Department",
+        tags=["Departments"],
+    ),
+    delete=extend_schema(
+        description="Route to delete a Department.Route only for managers",
+        summary="Delete Department",
+        tags=["Departments"],
+    )
+)
+
+
 class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
