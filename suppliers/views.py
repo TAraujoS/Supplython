@@ -6,11 +6,12 @@ from rest_framework_simplejwt.authentication import JWTAuthentication
 from employees.permissions import IsManager
 
 
-class SupplierView(generics.CreateAPIView):
+class SupplierView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
     serializer_class = SupplierSerializer
+    queryset = Supplier.objects.all()
 
 
 class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):

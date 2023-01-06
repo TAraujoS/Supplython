@@ -27,5 +27,5 @@ class Invoice(models.Model):
         related_name="invoices",
     )
 
-    def __repr__(self) -> str:
-        return f"<[{self.id}] - {self.first_name}, {self.is_manager}>"
+    # def __repr__(self) -> str:
+    #     return f"<[{self.id}] - {self.invoice_number}, {self.description}, {self.validity}, {self.description}>"
