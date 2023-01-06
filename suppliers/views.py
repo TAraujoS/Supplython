@@ -9,8 +9,6 @@ class SupplierView(generics.ListCreateAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
-    # serializer_class = SupplierSerializer
-
     def get_serializer_class(self):
         if self.request.method == "GET":
             return SupplierDetailSerializer
@@ -23,10 +21,6 @@ class SupplierView(generics.ListCreateAPIView):
 class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
-    
-    def get_queryset(self):
-        suppliers = Supplier.objects.filter(id=self.kwargs['pk'])
-        return suppliers
 
     def get_serializer_class(self):
         if self.request.method == "GET":
