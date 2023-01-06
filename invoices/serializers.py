@@ -7,6 +7,12 @@ from employees.serializers import EmployeeSerializer
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
+    invoice_number = serializers.CharField(
+        validators=[
+            UniqueValidator(Invoice.objects.all(), "Invoice Number should be unique.")
+        ],
+    )
+
     class Meta:
         model = Invoice
         fields = [
