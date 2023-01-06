@@ -16,14 +16,10 @@ class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    def post(self, req: Request) -> Response:
-        serializer = CategorySerializer(data=req.data)
+    def perform_create(self, serializer):
+        supplier = get_object_or_404(Supplier, id=self.request.data["supplier"])
 
-        serializer.is_valid(raise_exception=True)
-
-        serializer.save()
-
-        return Response(serializer.data, status.HTTP_201_CREATED)
+        return serializer.save(supplier=supplier)
 
 
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
