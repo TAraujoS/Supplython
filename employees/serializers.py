@@ -41,6 +41,15 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         return employee
 
+    def get_fields(self, *args, **kwargs):
+
+        fields = super().get_fields(*args, **kwargs)
+        request = self.context.get("request", None)
+        if request and getattr(request, "method", None) == "POST":
+            fields["department_id"].required = False
+
+        return fields
+
 
 class DetailEmployeeSerializer(serializers.ModelSerializer):
     is_manager = serializers.BooleanField(source="is_superuser")
@@ -82,13 +91,3 @@ class DetailEmployeeSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
-
-    def get_fields(self, *args, **kwargs):
-
-        fields = super().get_fields(*args, **kwargs)
-        print(fields)
-        request = self.context.get("request", None)
-        if request and getattr(request, "method", None) == "POST":
-            fields["department_id"].required = False
-
-        return fields
