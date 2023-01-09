@@ -6,6 +6,7 @@ from drf_spectacular.utils import extend_schema_view, extend_schema
 
 from .models import Invoice
 from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
+from employees.permissions import IsManager
 from contracts.models import Contract
 from employees.models import Employee
 from suppliers.models import Supplier
