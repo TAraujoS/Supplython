@@ -43,7 +43,7 @@ class InvoiceView(generics.ListCreateAPIView):
             subject="New Invoice Created",
             message="Um novo invoice foi gerado no nome da sua empresa, verifique os dados que foram preenchidos!",
             from_email=settings.EMAIL_HOST_USER,
-            recipient_list=["thiago-pin@hotmail.com", "hikfm2@gmail.com"],
+            recipient_list=[supplier.email],
             fail_silently=False,
         )
 
