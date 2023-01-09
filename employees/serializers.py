@@ -53,7 +53,7 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
 class DetailEmployeeSerializer(serializers.ModelSerializer):
     is_manager = serializers.BooleanField(source="is_superuser")
-    department_id = serializers.IntegerField()
+    department_id = serializers.IntegerField(write_only=True)
     department = DepartmentSerializer(read_only=True)
 
     class Meta:
