@@ -2,22 +2,34 @@ from rest_framework import serializers
 from .models import Supplier
 from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
+<<<<<<< HEAD
 from .new_serializer import ContractNewSerializer, CategoryNewSerializer, DepartmentNewSerializer
+=======
+from .newSerialier import (
+    ContractNewSerializer,
+    CategoryNewSerializer,
+    DepartmentNewSerializer,
+)
+>>>>>>> 1bb64f7ca08e16a981620eaed5fcc1675f84c0e8
 
 
 class SupplierSerializer(serializers.ModelSerializer):
     name = serializers.CharField(
-        validators=[UniqueValidator(Supplier.objects.all(), "Name should be unique.")]
+        validators=[UniqueValidator(Supplier.objects.all(), "Name should be unique.")],
     )
 
     email = serializers.EmailField(
-        validators=[UniqueValidator(Supplier.objects.all(), "E-mail should be unique.")]
+        validators=[
+            UniqueValidator(Supplier.objects.all(), "E-mail should be unique.")
+        ],
+        max_length=50,
     )
 
     tel = serializers.CharField(
         validators=[
             UniqueValidator(Supplier.objects.all(), "Contact should be unique.")
-        ]
+        ],
+        max_length=20,
     )
 
     class Meta:
