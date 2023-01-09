@@ -32,8 +32,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "id",
             "created_at",
         ]
-        
-            
+
     def create(self, validated_data):
         return Invoice.objects.create(**validated_data)
 

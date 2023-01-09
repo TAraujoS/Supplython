@@ -1,11 +1,12 @@
-from .models import Category
-from .serializers import CategorySerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import generics
-from employees.permissions import IsManager
-from suppliers.models import Supplier
 from django.shortcuts import get_object_or_404
 from drf_spectacular.utils import extend_schema_view, extend_schema
+
+from .models import Category
+from .serializers import CategorySerializer
+from suppliers.models import Supplier
+from employees.permissions import IsManager
 
 
 @extend_schema_view(
@@ -49,6 +50,7 @@ class CategoryView(generics.ListCreateAPIView):
         summary="Delete Category",
         tags=["Categories"],
     ),
+    put=extend_schema(exclude=True),
 )
 class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]

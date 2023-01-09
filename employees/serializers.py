@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Employee
 from rest_framework.validators import UniqueValidator
+from employees.models import Employee
 from departments.models import Department
 from departments.serializer import DepartmentSerializer
 
