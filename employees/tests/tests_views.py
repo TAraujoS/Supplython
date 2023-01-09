@@ -21,7 +21,6 @@ response_get = client.get("/api/employees/")
 
 response_get = client.get("/api/employees/1/")
 
-
 response_get = client.patch("/api/employees/1/", {"name": "Manager Juninho"})
 
 
