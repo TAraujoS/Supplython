@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from .models import Supplier
+from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
-from .newSerialier import ContractNewSerializer, CategoryNewSerializer, DepartmentNewSerializer
+from .new_serializer import ContractNewSerializer, CategoryNewSerializer, DepartmentNewSerializer
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -37,23 +38,23 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 class SupplierDetailSerializer(serializers.ModelSerializer):
     
-    contracts   = ContractNewSerializer(read_only=True, many=True)
-    categories   = CategoryNewSerializer(read_only=True, many=True)
-    departments = DepartmentNewSerializer(read_only=True, many=True)
-
+    # contracts   = ContractNewSerializer(many=True)
+    # categories   = CategoryNewSerializer(many=True)
+    # departments = DepartmentNewSerializer(many=True)
+    contract_id = serializers.IntegerField(write_only=True)
 
 
     class Meta:
         model = Supplier
-        fields = ["id", "name", "email", "tel", "cnpj",  "contracts", "categories", "departments"]
+        fields = ["id", "name", "email", "tel", "cnpj",  "contract_id"]
 
         read_only_fields = ["id", "name", "email", "tel", "cnpj"]
 
-        def update(self, instance: Supplier, validated_data):
+        # def update(self, instance: Supplier, validated_data):
 
-            for key, value in validated_data.items():
-                setattr(instance, key, value)
+        #     for key, value in validated_data.items():
+        #         setattr(instance, key, value)
 
-            instance.save()
+        #     instance.save()
 
-            return instance
+        #     return instance
