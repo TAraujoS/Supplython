@@ -39,23 +39,42 @@ class EmployeeModelTest(TestCase):
         self.assertEqual(self.employee.password, self.employee_data["password"])
 
 
-# class EmployeeModelTestRelation(TestCase):
-#     @classmethod
-#     def setUpTestData(cls):
-#         cls.employees = [Employee.objects.create(cache=500000) for _ in range(20)]
+class EmployeeModelTestRelation(TestCase):
+    @classmethod
+    def setUpTestData(cls):
 
-#         cls.department = Department.objects.create(name="Health")
+        cls.employees = [
+            Employee.objects.create_user(
+                name="cleitu",
+                username="cleitinhu",
+                email="cleitinhu@mail.com",
+                password="1234",
+                is_superuser=True,
+            ),
+            Employee.objects.create_user(
+                name="cleituS",
+                username="cleitinhuS",
+                email="cleitinhuS@mail.com",
+                password="1234",
+                is_superuser=True,
+            ),
+        ]
 
-#     def test_department_may_contain_multiple_employees(self):
+        cls.department = Department.objects.create(
+            name="T.I",
+            budget="500000.80",
+        )
 
-#         for employee in self.employees:
-#             employee.department = self.department  # (4)
-#             employee.save()
+    def test_department_may_contain_multiple_employees(self):
 
-#         self.assertEquals(len(self.employees), self.department.employees.count())  # (5)
+        for employee in self.employees:
+            employee.department = self.department
+            employee.save()
 
-#         for employee in self.employees:
-#             self.assertIs(employee.department, self.department)
+        self.assertEquals(len(self.employees), self.department.employees.count())
+
+        for employee in self.employees:
+            self.assertIs(employee.department, self.department)
 
 
 # class EmployeeTestModel(TestCase):

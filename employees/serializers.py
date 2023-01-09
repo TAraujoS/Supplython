@@ -81,13 +81,14 @@ class DetailEmployeeSerializer(serializers.ModelSerializer):
         ]
 
     def update(self, instance: Employee, validated_data: dict) -> Employee:
+        department_id = validated_data.pop("department_id", None)
+
+        if department_id:
+            instance.department = Department.objects.get(pk=department_id)
 
         for key, value in validated_data.items():
             setattr(instance, key, value)
 
-        instance.department = Department.objects.get(
-            pk=validated_data.pop("department_id")
-        )
         instance.save()
 
         return instance
