@@ -120,9 +120,9 @@ if DATABASE_URL:
         default=DATABASE_URL, conn_max_age=500, ssl_require=True
     )
     DATABASES["default"].update(db_from_env)
-    DEBUG = False
+    DEBUG = True
 
-if not DEBUG:
+if DEBUG:
     # Tell Django to copy statics to the `staticfiles` directory
     # in your application directory on Render.
     STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
