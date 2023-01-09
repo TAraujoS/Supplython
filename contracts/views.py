@@ -29,7 +29,7 @@ class ContractView(generics.ListCreateAPIView):
 
     queryset = Contract.objects.all()
 
-    #def get_serializer_class(self):
+    def get_serializer_class(self):
         if self.request.method == "GET":
             return DetailedContractSerializer
 
