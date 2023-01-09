@@ -30,7 +30,6 @@ class ContractSerializer(serializers.ModelSerializer):
 
 class DetailedContractSerializer(serializers.ModelSerializer):
     category = CategorySerializer(read_only=True)
-    supplier = SupplierSerializer(read_only=True)
 
     class Meta:
         model = Contract
@@ -39,7 +38,6 @@ class DetailedContractSerializer(serializers.ModelSerializer):
             "duration",
             "value",
             "category",
-            "supplier",
         ]
 
-        read_only_fields = ["id", "duration", "value", "category", "supplier"]
+        read_only_fields = ["id", "duration", "value", "category"]
