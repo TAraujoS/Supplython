@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from .models import Employee
 from rest_framework.validators import UniqueValidator
+from employees.models import Employee
 from departments.models import Department
 from departments.serializer import DepartmentSerializer
 
@@ -41,10 +41,19 @@ class EmployeeSerializer(serializers.ModelSerializer):
 
         return employee
 
+    def get_fields(self, *args, **kwargs):
+
+        fields = super().get_fields(*args, **kwargs)
+        request = self.context.get("request", None)
+        if request and getattr(request, "method", None) == "POST":
+            fields["department_id"].required = False
+
+        return fields
+
 
 class DetailEmployeeSerializer(serializers.ModelSerializer):
     is_manager = serializers.BooleanField(source="is_superuser")
-    department_id = serializers.IntegerField()
+    department_id = serializers.IntegerField(write_only=True)
     department = DepartmentSerializer(read_only=True)
 
     class Meta:
@@ -82,13 +91,3 @@ class DetailEmployeeSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
-
-    def get_fields(self, *args, **kwargs):
-
-        fields = super().get_fields(*args, **kwargs)
-        print(fields)
-        request = self.context.get("request", None)
-        if request and getattr(request, "method", None) == "POST":
-            fields["department_id"].required = False
-
-        return fields
