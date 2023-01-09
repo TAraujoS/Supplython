@@ -11,12 +11,12 @@ from employees.permissions import IsManager
 
 @extend_schema_view(
     post=extend_schema(
-        description="Route to create Department.Route only for managers",
+        description="Route to create Department. Route only for managers",
         summary="Create a Department",
         tags=["Departments"],
     ),
     get=extend_schema(
-        description="Route to list all Departments.Route only for managers",
+        description="Route to list all Departments. Route only for managers",
         summary="List all Departments",
         tags=["Departments"],
     ),
@@ -36,8 +36,8 @@ class DepartmentView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        description="Route to list a single Department",
-        summary="List Department",
+        description="Route to list Department by id. Route only for managers",
+        summary="List Department by id",
         tags=["Departments"],
     ),
     patch=extend_schema(
@@ -50,10 +50,11 @@ class DepartmentView(generics.ListCreateAPIView):
         summary="Delete Department",
         tags=["Departments"],
     ),
+    put=extend_schema(exclude=True),
 )
 class DepartmentDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
-    queryset = Department.objects.all()
     serializer_class = DepartmentSerializer
+    queryset = Department.objects.all()

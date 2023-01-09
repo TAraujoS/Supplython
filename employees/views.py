@@ -9,13 +9,13 @@ from .permissions import IsManager, isAdminGet
 
 @extend_schema_view(
     post=extend_schema(
-        description="Route to create employees",
+        description="Route to create Employees",
         summary="Create Employees",
         tags=["Employees"],
     ),
     get=extend_schema(
-        description="Route for a superuser to list all employees",
-        summary="List all employees",
+        description="Route to list all Employees. Route only for managers",
+        summary="List all Employees",
         tags=["Employees"],
     ),
 )
@@ -34,15 +34,16 @@ class EmployeeView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        description="Route for a superuser to list a single employee",
-        summary="List employee",
+        description="Route to list Employee by id. Route only for managers",
+        summary="List Employee by id",
         tags=["Employees"],
     ),
     patch=extend_schema(
-        description="Route for a superuser to update an employee",
-        summary="Update employee",
+        description="Route to update Employee by id. Route only for managers",
+        summary="Update Employee",
         tags=["Employees"],
     ),
+    put=extend_schema(exclude=True),
 )
 class EmployeeDetailView(generics.RetrieveUpdateAPIView):
     authentication_classes = [JWTAuthentication]

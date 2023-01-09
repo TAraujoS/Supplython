@@ -9,13 +9,13 @@ from employees.permissions import IsManager
 
 @extend_schema_view(
     post=extend_schema(
-        description="Route to create suppliers",
+        description="Route to create Suppliers. Route only for managers",
         summary="Create Supplier",
         tags=["Suppliers"],
     ),
     get=extend_schema(
-        description="Route for a manager to list all suppliers",
-        summary="List all suppliers",
+        description="Route to list all Suppliers. Route only for managers",
+        summary="List all Suppliers",
         tags=["Suppliers"],
     ),
 )
@@ -34,23 +34,25 @@ class SupplierView(generics.ListCreateAPIView):
 
 @extend_schema_view(
     get=extend_schema(
-        description="Route for a manager authenticated to list a single supplier",
-        summary="List supplier",
+        description="Route to list Supplier by id. Route only for managers",
+        summary="List Supplier by id",
         tags=["Suppliers"],
     ),
     patch=extend_schema(
-        description="Route for a manager authenticated to update a supplier by id",
-        summary="Update supplier",
+        description="Route to update Supplier by id. Route only for managers",
+        summary="Update Supplier",
         tags=["Suppliers"],
     ),
     delete=extend_schema(
-        description="Route for a manager authenticated to delete a supplier by id",
-        summary="Delete supplier",
+        description="Route to delete Supplier by id. Route only for managers",
+        summary="Delete Supplier",
         tags=["Suppliers"],
     ),
+    put=extend_schema(exclude=True),
 )
 class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
     authentication_classes = [JWTAuthentication]
     permission_classes = [IsManager]
 
     serializer_class = SupplierDetailSerializer
+    queryset = Supplier.objects.all()

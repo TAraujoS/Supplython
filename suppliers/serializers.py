@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Supplier
 from rest_framework.validators import UniqueValidator
-from contracts.serializers import ContractSerializer
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -36,8 +35,6 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class SupplierDetailSerializer(serializers.ModelSerializer):
-    contract = ContractSerializer(read_only=True, many=True)
-
     class Meta:
         model = Supplier
         fields = ["id", "name", "email", "tel", "cnpj"]

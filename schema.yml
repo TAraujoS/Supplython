@@ -1,0 +1,1184 @@
+openapi: 3.0.3
+info:
+  title: Supplython
+  version: 1.0.0
+  description: 'API Supplython: This application is a cost management system for small
+    companies, based on the needs of the Supply Chain area. It has CRUD of employees,
+    suppliers, invoices, departments, categories and contracts.'
+paths:
+  /api/categories/:
+    get:
+      operationId: api_categories_list
+      description: Route to list all Categories. Route only for managers
+      summary: List all Categories
+      tags:
+      - Categories
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+          description: ''
+    post:
+      operationId: api_categories_create
+      description: Route to create Categories. Route only for managers
+      summary: Create Categories
+      tags:
+      - Categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Category'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Category'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Category'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+  /api/categories/{id}/:
+    get:
+      operationId: api_categories_retrieve
+      description: Route to list Category by id. Route only for managers
+      summary: List Category by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Categories
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    patch:
+      operationId: api_categories_partial_update
+      description: Route to update Category. Route only for managers
+      summary: Update Category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Categories
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategory'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+          description: ''
+    delete:
+      operationId: api_categories_destroy
+      description: Route to delete Category by id. Route only for managers
+      summary: Delete Category
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Categories
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/contract/:
+    get:
+      operationId: api_contract_list
+      description: Route to list all contracts. Route only for managers.
+      summary: List all Contracts.
+      tags:
+      - Contracts
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailedContract'
+          description: ''
+    post:
+      operationId: api_contract_create
+      description: Route to create Contracts. Route only for managers.
+      summary: Create Contracts
+      tags:
+      - Contracts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contract'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Contract'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Contract'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+          description: ''
+  /api/contract/{id}/:
+    get:
+      operationId: api_contract_retrieve
+      description: Route to list Contract by id. Route only for managers
+      summary: List Contract by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Contracts
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedContract'
+          description: ''
+    patch:
+      operationId: api_contract_partial_update
+      description: Route to update Contract by id. Route only for managers
+      summary: Update Contract
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Contracts
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedContract'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedContract'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedContract'
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Contract'
+          description: ''
+    delete:
+      operationId: api_contract_destroy
+      description: Route to delete Contract by id. Route only for managers
+      summary: Delete Contract.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Contracts
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/departments/:
+    get:
+      operationId: api_departments_list
+      description: Route to list all Departments. Route only for managers
+      summary: List all Departments
+      tags:
+      - Departments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+          description: ''
+    post:
+      operationId: api_departments_create
+      description: Route to create Department. Route only for managers
+      summary: Create a Department
+      tags:
+      - Departments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Department'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Department'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Department'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+  /api/departments/{id}/:
+    get:
+      operationId: api_departments_retrieve
+      description: Route to list Department by id. Route only for managers
+      summary: List Department by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Departments
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    patch:
+      operationId: api_departments_partial_update
+      description: Route to update a Department. Route only for managers
+      summary: Update Department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Departments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDepartment'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Department'
+          description: ''
+    delete:
+      operationId: api_departments_destroy
+      description: Route to delete a Department.Route only for managers
+      summary: Delete Department
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Departments
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/employees/:
+    get:
+      operationId: api_employees_list
+      description: Route to list all Employees. Route only for managers
+      summary: List all Employees
+      tags:
+      - Employees
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailEmployee'
+          description: ''
+    post:
+      operationId: api_employees_create
+      description: Route to create Employees
+      summary: Create Employees
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Employee'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Employee'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+          description: ''
+  /api/employees/{id}/:
+    get:
+      operationId: api_employees_retrieve
+      description: Route to list Employee by id. Route only for managers
+      summary: List Employee by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Employees
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailEmployee'
+          description: ''
+    patch:
+      operationId: api_employees_partial_update
+      description: Route to update Employee by id. Route only for managers
+      summary: Update Employee
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Employees
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDetailEmployee'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDetailEmployee'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDetailEmployee'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailEmployee'
+          description: ''
+  /api/employees/login/:
+    post:
+      operationId: api_employees_login_create
+      description: |-
+        Takes a set of user credentials and returns an access and refresh JSON web
+        token pair to prove the authentication of those credentials.
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/TokenObtainPair'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TokenObtainPair'
+          description: ''
+  /api/invoices/:
+    get:
+      operationId: api_invoices_list
+      description: Route to list all Invoices.
+      summary: List all Invoices.
+      tags:
+      - Invoices
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DetailedInvoice'
+          description: ''
+    post:
+      operationId: api_invoices_create
+      description: Route to create Invoice.
+      summary: Create Invoice
+      tags:
+      - Invoices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Invoice'
+        required: true
+      security:
+      - jwtAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+          description: ''
+  /api/invoices/{id}/:
+    get:
+      operationId: api_invoices_retrieve
+      description: Route to list Invoice by id. Route only for managers
+      summary: List Invoice by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Invoices
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DetailedInvoice'
+          description: ''
+    patch:
+      operationId: api_invoices_partial_update
+      description: Route to update Invoice by id. Route only for managers
+      summary: Update Invoice
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Invoices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedInvoice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedInvoice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedInvoice'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Invoice'
+          description: ''
+    delete:
+      operationId: api_invoices_destroy
+      description: Route to delete Invoice by id. Route only for managers
+      summary: Delete Invoice.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Invoices
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/suppliers/:
+    get:
+      operationId: api_suppliers_list
+      description: Route to list all Suppliers. Route only for managers
+      summary: List all Suppliers
+      tags:
+      - Suppliers
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SupplierDetail'
+          description: ''
+    post:
+      operationId: api_suppliers_create
+      description: Route to create Suppliers. Route only for managers
+      summary: Create Supplier
+      tags:
+      - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Supplier'
+        required: true
+      security:
+      - jwtAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Supplier'
+          description: ''
+  /api/suppliers/{id}/:
+    get:
+      operationId: api_suppliers_retrieve
+      description: Route to list Supplier by id. Route only for managers
+      summary: List Supplier by id
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Suppliers
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplierDetail'
+          description: ''
+    patch:
+      operationId: api_suppliers_partial_update
+      description: Route to update Supplier by id. Route only for managers
+      summary: Update Supplier
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Suppliers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSupplierDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSupplierDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSupplierDetail'
+      security:
+      - jwtAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SupplierDetail'
+          description: ''
+    delete:
+      operationId: api_suppliers_destroy
+      description: Route to delete Supplier by id. Route only for managers
+      summary: Delete Supplier
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+      tags:
+      - Suppliers
+      security:
+      - jwtAuth: []
+      responses:
+        '204':
+          description: No response body
+components:
+  schemas:
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
+          readOnly: true
+      required:
+      - id
+      - name
+      - supplier
+    Contract:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        duration:
+          type: string
+          format: date
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        supplier_id:
+          type: integer
+          readOnly: true
+        category_id:
+          type: integer
+          readOnly: true
+      required:
+      - category_id
+      - duration
+      - id
+      - supplier_id
+      - value
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        budget:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
+          readOnly: true
+      required:
+      - budget
+      - id
+      - name
+      - supplier
+    DetailEmployee:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 100
+        is_active:
+          type: boolean
+        is_manager:
+          type: boolean
+        department_id:
+          type: integer
+        department:
+          allOf:
+          - $ref: '#/components/schemas/Department'
+          readOnly: true
+      required:
+      - department
+      - department_id
+      - email
+      - id
+      - is_manager
+      - name
+      - password
+      - username
+    DetailedContract:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        duration:
+          type: string
+          format: date
+          readOnly: true
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+          readOnly: true
+        category:
+          allOf:
+          - $ref: '#/components/schemas/Category'
+          readOnly: true
+        supplier:
+          allOf:
+          - $ref: '#/components/schemas/Supplier'
+          readOnly: true
+      required:
+      - category
+      - duration
+      - id
+      - supplier
+      - value
+    DetailedInvoice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        invoice_number:
+          type: string
+          maxLength: 10
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        description:
+          type: string
+          maxLength: 140
+        verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        validity:
+          type: string
+          format: date
+        contract:
+          allOf:
+          - $ref: '#/components/schemas/Contract'
+          readOnly: true
+        supplier:
+          allOf:
+          - $ref: '#/components/schemas/Supplier'
+          readOnly: true
+        employee:
+          allOf:
+          - $ref: '#/components/schemas/Employee'
+          readOnly: true
+      required:
+      - contract
+      - created_at
+      - description
+      - employee
+      - id
+      - invoice_number
+      - supplier
+      - validity
+      - value
+      - verified
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 100
+        is_active:
+          type: boolean
+        is_manager:
+          type: boolean
+        department_id:
+          type: integer
+      required:
+      - email
+      - id
+      - is_manager
+      - name
+      - password
+      - username
+    Invoice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        invoice_number:
+          type: string
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        description:
+          type: string
+          maxLength: 140
+        verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        validity:
+          type: string
+          format: date
+        contract_id:
+          type: integer
+          readOnly: true
+        supplier_id:
+          type: integer
+          readOnly: true
+        employee_id:
+          type: integer
+          readOnly: true
+      required:
+      - contract_id
+      - created_at
+      - description
+      - employee_id
+      - id
+      - invoice_number
+      - supplier_id
+      - validity
+      - value
+      - verified
+    PatchedCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
+          readOnly: true
+    PatchedContract:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        duration:
+          type: string
+          format: date
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        supplier_id:
+          type: integer
+          readOnly: true
+        category_id:
+          type: integer
+          readOnly: true
+    PatchedDepartment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        budget:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
+          readOnly: true
+    PatchedDetailEmployee:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        username:
+          type: string
+          maxLength: 50
+        email:
+          type: string
+          format: email
+          maxLength: 50
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 100
+        is_active:
+          type: boolean
+        is_manager:
+          type: boolean
+        department_id:
+          type: integer
+        department:
+          allOf:
+          - $ref: '#/components/schemas/Department'
+          readOnly: true
+    PatchedInvoice:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        invoice_number:
+          type: string
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,6}(?:\.\d{0,2})?$
+        description:
+          type: string
+          maxLength: 140
+        verified:
+          type: boolean
+        created_at:
+          type: string
+          format: date-time
+          readOnly: true
+        validity:
+          type: string
+          format: date
+        contract_id:
+          type: integer
+          readOnly: true
+        supplier_id:
+          type: integer
+          readOnly: true
+        employee_id:
+          type: integer
+          readOnly: true
+    PatchedSupplierDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        tel:
+          type: string
+          readOnly: true
+        cnpj:
+          type: string
+          readOnly: true
+    Supplier:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+        email:
+          type: string
+          format: email
+        tel:
+          type: string
+        cnpj:
+          type: string
+          maxLength: 15
+      required:
+      - cnpj
+      - email
+      - id
+      - name
+      - tel
+    SupplierDetail:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          readOnly: true
+        email:
+          type: string
+          format: email
+          readOnly: true
+        tel:
+          type: string
+          readOnly: true
+        cnpj:
+          type: string
+          readOnly: true
+      required:
+      - cnpj
+      - email
+      - id
+      - name
+      - tel
+    TokenObtainPair:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        access:
+          type: string
+          readOnly: true
+        refresh:
+          type: string
+          readOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+  securitySchemes:
+    jwtAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
