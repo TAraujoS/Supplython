@@ -1,29 +1,16 @@
 from rest_framework import serializers
 from .models import Contract
 
-from suppliers.serializers import SupplierSerializer
 from categories.serializers import CategorySerializer
-from invoices.models import Invoice
-from invoices.serializers import InvoiceSerializer
 
 
 class ContractSerializer(serializers.ModelSerializer):
-    invoice_count = serializers.SerializerMethodField()
-
-    def get_invoice_count(self, obj: Contract):
-        invoice_list = Contract.objects.get(id=obj.id).Invoice.all()
-
-        result = invoice_list.count()
-
-        return result
-
     class Meta:
         model = Contract
         fields = [
             "id",
             "duration",
             "value",
-            "invoice_list",
             "supplier_id",
             "category_id",
         ]
@@ -41,7 +28,11 @@ class ContractSerializer(serializers.ModelSerializer):
 
 
 class DetailedContractSerializer(serializers.ModelSerializer):
+    invoice_count = serializers.SerializerMethodField()
     category = CategorySerializer(read_only=True)
+
+    def get_invoice_count(self, obj: Contract):
+        return obj.invoices.count()
 
     class Meta:
         model = Contract
@@ -49,7 +40,8 @@ class DetailedContractSerializer(serializers.ModelSerializer):
             "id",
             "duration",
             "value",
+            "invoice_count",
             "category",
         ]
 
-        read_only_fields = ["id", "duration", "value", "category"]
+        read_only_fields = ["id"]
