@@ -2,7 +2,6 @@ from rest_framework import serializers
 from .models import Supplier
 from rest_framework.validators import UniqueValidator
 from .newSerialier import ContractNewSerializer, CategoryNewSerializer, DepartmentNewSerializer
-import ipdb
 
 
 class SupplierSerializer(serializers.ModelSerializer):
