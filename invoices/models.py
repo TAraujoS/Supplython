@@ -26,6 +26,3 @@ class Invoice(models.Model):
         on_delete=models.CASCADE,
         related_name="invoices",
     )
-
-    # def __repr__(self) -> str:
-    #     return f"<[{self.id}] - {self.invoice_number}, {self.description}, {self.validity}, {self.description}>"
