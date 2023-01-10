@@ -1,18 +1,21 @@
 from django.test import TestCase
-from .tests_invoices_factories import SuplementsCreator
+from .tests_invoices_factories import (
+    create_manager,
+    create_supplier,
+    create_category,
+    create_contract,
+)
 from invoices.models import Invoice
-
 
 
 class InvoiceModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
 
-        SuplementsCreator.create_manager()
-        SuplementsCreator.create_employee()
-        SuplementsCreator.create_supplier()
-        SuplementsCreator.create_category()
-        SuplementsCreator.create_contract()
+        create_manager()
+        create_supplier()
+        create_category()
+        create_contract()
 
         invoice_data_1 = {
             "invoice_number": "58785",
