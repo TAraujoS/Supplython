@@ -1,7 +1,6 @@
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework import generics
 from drf_spectacular.utils import extend_schema_view, extend_schema
-
 from .models import Employee
 from .serializers import EmployeeSerializer, DetailEmployeeSerializer
 from .permissions import IsManager, isAdminGet
