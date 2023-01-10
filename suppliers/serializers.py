@@ -1,12 +1,12 @@
 from rest_framework import serializers
+from django.shortcuts import get_object_or_404
 from .models import Supplier
+from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
 from .newSerialier import (
     ContractNewSerializer,
     DepartmentNewSerializer,
 )
-from django.shortcuts import get_object_or_404
-from contracts.models import Contract
 
 
 class SupplierSerializer(serializers.ModelSerializer):
@@ -47,10 +47,7 @@ class SupplierSerializer(serializers.ModelSerializer):
 class SupplierDetailSerializer(serializers.ModelSerializer):
 
     contracts = ContractNewSerializer(read_only=True, many=True)
-    # categories = CategoryNewSerializer(read_only=True, many=True)
     departments = DepartmentNewSerializer(read_only=True, many=True)
-    # category_id = serializers.IntegerField(write_only=True)
-    # department_id = serializers.IntegerField(write_only=True)
     contract_id = serializers.IntegerField(write_only=True)
 
     class Meta:
@@ -62,23 +59,17 @@ class SupplierDetailSerializer(serializers.ModelSerializer):
             "tel",
             "cnpj",
             "contracts",
-            # "categories",
             "departments",
-            # "category_id",
-            # "department_id",
             "contract_id",
         ]
 
         read_only_fields = [
             "id",
             "contracts",
-            # "categories",
             "departments",
         ]
 
     def update(self, instance: Supplier, validated_data: dict) -> Supplier:
-        # department = validated_data.pop("department_id", None)
-        # category = validated_data.pop("category_id", None)
         contract = validated_data.pop("contract_id", None)
 
         for key, value in validated_data.items():

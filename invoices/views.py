@@ -53,7 +53,6 @@ class InvoiceView(generics.ListCreateAPIView):
                 )
 
         contract = get_object_or_404(Contract, id=self.request.data["contract_id"])
-        # supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
         employee = get_object_or_404(Employee, id=self.request.data["employee_id"])
 
         send_mail(

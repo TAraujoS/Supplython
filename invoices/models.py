@@ -15,17 +15,11 @@ class Invoice(models.Model):
         related_name="invoices",
     )
 
-    # supplier = models.ForeignKey(
-    #     "suppliers.Supplier",
-    #     on_delete=models.CASCADE,
-    #     related_name="invoices",
-    # )
-
     employee = models.ForeignKey(
         "employees.Employee",
         on_delete=models.CASCADE,
         related_name="invoices",
     )
 
-    # def __repr__(self) -> str:
-    #     return f"<[{self.id}] - {self.invoice_number}, {self.description}, {self.validity}, {self.description}>"
+    def __repr__(self) -> str:
+        return f"<[{self.id}] - {self.invoice_number}, {self.description}, {self.validity}, {self.description}>"
