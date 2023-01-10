@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from drf_spectacular.utils import extend_schema_view, extend_schema
 
 from .models import Category
-from .serializers import CategorySerializer
+from .serializers import CategorySerializer, DetailCategorySerializer
 from suppliers.models import Supplier
 from employees.permissions import IsManager
 
@@ -29,7 +29,7 @@ class CategoryView(generics.ListCreateAPIView):
     serializer_class = CategorySerializer
 
     def perform_create(self, serializer):
-        supplier = get_object_or_404(Supplier, id=self.request.data["supplier"])
+        supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
 
         return serializer.save(supplier=supplier)
 
@@ -57,4 +57,4 @@ class CategoryDetailView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = [IsManager]
 
     queryset = Category.objects.all()
-    serializer_class = CategorySerializer
+    serializer_class = DetailCategorySerializer

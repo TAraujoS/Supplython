@@ -48,6 +48,8 @@ class SupplierDetailSerializer(serializers.ModelSerializer):
     contracts = ContractNewSerializer(read_only=True, many=True)
     categories = CategoryNewSerializer(read_only=True, many=True)
     departments = DepartmentNewSerializer(read_only=True, many=True)
+    category_id = serializers.IntegerField(write_only=True)
+    department_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Supplier
@@ -60,15 +62,34 @@ class SupplierDetailSerializer(serializers.ModelSerializer):
             "contracts",
             "categories",
             "departments",
+            "category_id",
+            "department_id",
         ]
 
-        read_only_fields = ["id", "name", "email", "tel", "cnpj"]
+        read_only_fields = [
+            "id",
+            "name",
+            "email",
+            "tel",
+            "cnpj",
+            "contracts",
+            "categories",
+            "departments",
+        ]
 
-        def update(self, instance: Supplier, validated_data):
+        def update(self, instance: Supplier, validated_data: dict) -> Supplier:
+            # department = validated_data.pop("department_id")
+            # category = validated_data.pop("category_id")
 
             for key, value in validated_data.items():
                 setattr(instance, key, value)
 
+            # if category:
+            #     instance.categories.add(category)
+
+            # if department:
+            #     instance.departments.add(department)
             instance.save()
+            # instance.supplier.add(category, department)
 
             return instance
