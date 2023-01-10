@@ -5,7 +5,6 @@ from drf_spectacular.utils import extend_schema_view, extend_schema
 
 from .models import Contract
 from categories.models import Category
-from suppliers.models import Supplier
 from .serializers import ContractSerializer, DetailedContractSerializer
 from employees.permissions import IsManager
 
@@ -36,8 +35,8 @@ class ContractView(generics.ListCreateAPIView):
 
     def perform_create(self, serializer):
         categories = get_object_or_404(Category, id=self.request.data["category_id"])
-        supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
-        return serializer.save(category=categories, supplier=supplier)
+
+        return serializer.save(category=categories)
 
 
 @extend_schema_view(
