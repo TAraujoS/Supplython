@@ -1,17 +1,17 @@
 from rest_framework import serializers
 from .models import Invoice
 from rest_framework.validators import UniqueValidator
-from contracts.serializers import ContractSerializer
+from contracts.serializers import ContractSerializer, DetailedContractSerializer
 from suppliers.serializers import SupplierSerializer
 from employees.serializers import EmployeeSerializer
 
 
 class InvoiceSerializer(serializers.ModelSerializer):
-    invoice_number = serializers.CharField(
-        validators=[
-            UniqueValidator(Invoice.objects.all(), "Invoice Number should be unique.")
-        ],
-    )
+    # invoice_number = serializers.CharField(
+    #     validators=[
+    #         UniqueValidator(Invoice.objects.all(), "Invoice Number should be unique.")
+    #     ],
+    # )
 
     class Meta:
         model = Invoice
@@ -24,7 +24,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
             "created_at",
             "validity",
             "contract_id",
-            "supplier_id",
+            # "supplier_id",
             "employee_id",
         ]
 
@@ -38,8 +38,7 @@ class InvoiceSerializer(serializers.ModelSerializer):
 
 
 class DetailedInvoiceSerializer(serializers.ModelSerializer):
-    contract = ContractSerializer(read_only=True)
-    supplier = SupplierSerializer(read_only=True)
+    contract = DetailedContractSerializer(read_only=True)
     employee = EmployeeSerializer(read_only=True)
 
     class Meta:
@@ -53,8 +52,7 @@ class DetailedInvoiceSerializer(serializers.ModelSerializer):
             "created_at",
             "validity",
             "contract",
-            "supplier",
             "employee",
         ]
 
-        read_only_fields = ["id", "created_at", "contract", "supplier", "employee"]
+        read_only_fields = ["id", "created_at", "contract", "employee"]

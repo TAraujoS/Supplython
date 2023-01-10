@@ -28,10 +28,10 @@ class CategoryView(generics.ListCreateAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
 
-    def perform_create(self, serializer):
-        supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
+    # def perform_create(self, serializer):
+    #     supplier = get_object_or_404(Supplier, id=self.request.data["supplier_id"])
 
-        return serializer.save(supplier=supplier)
+    #     return serializer.save(supplier=supplier)
 
 
 @extend_schema_view(
