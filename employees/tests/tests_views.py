@@ -26,20 +26,20 @@ class EmployeesViewsTest(APITestCase):
             for employee_id in range(1, 2)
         ]
 
-    # def test_create_common_user(self):
-    #     url = "/api/employees/"
+    def test_create_common_user(self):
+        url = "/api/employees/"
 
-    #     response = self.client.post(url, self.employeeNotAdmin, format="json")
-    #     expected_status_code = 201
-    #     message = "verify if status code 201 is returning"
+        response = self.client.post(url, self.employeeNotAdmin)
+        expected_status_code = 201
+        message = "verify if status code 201 is returning"
 
-    #     self.assertEqual(expected_status_code, response.status_code, message)
+        self.assertEqual(expected_status_code, response.status_code, message)
 
-    #     resulted_keys = response.json().keys()
-    #     expected_keys = ["id", "name", "username", "email", "password", "is_manager"]
-    #     message = "verify is all keys are being returned"
-    #     for key in expected_keys:
-    #         self.assertIn(key, resulted_keys, message)
+        resulted_keys = response.json().keys()
+        expected_keys = ["id", "name", "username", "email", "is_manager"]
+        message = "verify is all keys are being returned"
+        for key in expected_keys:
+            self.assertIn(key, resulted_keys, message)
 
     def test_can_list_all_employees(self):
         token = self.client.post(
