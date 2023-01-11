@@ -75,15 +75,3 @@ class EmployeeModelTestRelation(TestCase):
 
         for employee in self.employees:
             self.assertIs(employee.department, self.department)
-
-
-# class EmployeeTestModel(TestCase):
-#     @classmethod
-#     def setUp(cls):
-#         cls.employee = baker.make("employees.Employee")
-
-
-# class DepartmentTestModel(TestCase):
-#     @classmethod
-#     def setUp(cls):
-#         cls.department = baker.make("departments.Department")
