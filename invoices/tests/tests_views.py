@@ -1,56 +1,49 @@
-# from rest_framework.test import APIClient
-# from rest_framework.test import APITestCase
-# from employees.models import Employee
-# from employees.serializers import EmployeeSerializer
+from rest_framework.test import APITestCase
+from rest_framework.test import APIClient
+from .tests_invoices_factories import (
+    create_manager,
+    create_supplier,
+    create_category,
+    create_contract,
+    update_supplier,
+)
+from rest_framework.views import status
 
-# client = APIClient()
-
-# response_post = client.post(
-#     "/api/employees/",
-#     {
-#         "name": "Manager",
-#         "username": "manager10",
-#         "email": "manager10@mail.com",
-#         "password": "1234",
-#         "is_manager": True,
-#     },
-#     format="json",
-# )
-
-# response_get = client.get("/api/employees/")
-
-# response_get = client.get("/api/employees/1/")
-
-# response_get = client.patch("/api/employees/1/", {"name": "Manager Juninho"})
+client = APIClient()
 
 
-# class EmployeesViewsTest(APITestCase):
-#     @classmethod
-#     def setUpTestData(cls):
-#         cls.employees = [
-#             Employee.objects.create_user(
-#                 name=f"Employee {employee_id}",
-#                 username=f"cleitinhu {employee_id}",
-#                 email=f"managermiaw{employee_id}@mail.com ",
-#                 password="1234",
-#                 is_superuser=True,
-#             )
-#             for employee_id in range(1, 6)
-#         ]
+class InvoicesViewsTest(APITestCase):
+    @classmethod
+    def setUpTestData(cls):
+        cls.BASE_URL = "/api/invoices/"
+        cls.BASE_DETAIL_URL = cls.BASE_URL + "1/"
+        cls.maxDiff = None
 
-#     def test_can_list_all_employees(self):
-#         response = self.client.get("/api/employees/")
-#         self.assertEqual(response.status_code, 200)
+        cls.manager, cls.token = create_manager()
+        cls.supplier = create_supplier()
+        cls.category = create_category()
+        cls.contract = create_contract()
+        cls.update_supplier = update_supplier()
 
-#         self.assertEqual(len(self.employees), len(response.data))
+    def test_invoice_creation_without_token(self):
+        invoice_data = {
+            "invoice_number": "58785",
+            "value": "20000.00",
+            "description": "Manutenção de Servidores Linux CentOS",
+            "verified": False,
+            "validity": "2023-02-10",
+            "contract_id": 1,
+            "employee_id": 1,
+        }
 
-#         for employee in self.employees:
-#             self.assertIn(EmployeeSerializer(instance=employee).data, response.data)
+        response = self.client.post(self.BASE_URL, data=invoice_data)
 
-#     def test_can_retrieve_a_specific_employee(self):
-#         employee = self.employees[0]
-#         response = self.client.get(f"/api/employees/{employee.id}/")
-#         self.assertEqual(response.status_code, 200)
-#         self.assertEqual(response.json()["id"], employee.id)
+        # STATUS CODE
+        expected_status_code = status.HTTP_401_UNAUTHORIZED
+        resulted_status_code = response.status_code
 
-#         self.assertEqual(EmployeeSerializer(instance=employee).data, response.data)
+        msg = (
+            "Verifique se o status code retornado do POST sem token "
+            + f"em `{self.BASE_URL}` é {expected_status_code}"
+        )
+        self.assertEqual(expected_status_code, resulted_status_code, msg)

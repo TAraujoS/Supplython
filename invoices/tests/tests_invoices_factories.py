@@ -2,6 +2,7 @@ from employees.models import Employee
 from suppliers.models import Supplier
 from categories.models import Category
 from contracts.models import Contract
+from invoices.models import Invoice
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
@@ -15,15 +16,15 @@ def create_manager() -> tuple[Employee, RefreshToken]:
     }
 
     manager = Employee.objects.create_superuser(**manager_data)
-    manager_token = RefreshToken.for_user(manager)
+    token = RefreshToken.for_user(manager)
 
-    return manager, manager_token
+    return manager, token
 
 
 def create_supplier() -> Supplier:
     supplier_data_1 = {
         "name": "RTI Soluctions",
-        "email": "rti.soluctions@mail.com",
+        "email": "hikfm2@gmail.com",
         "tel": "4135233561",
         "cnpj": "27335286000101",
     }
@@ -62,3 +63,18 @@ def update_supplier() -> Supplier:
     supplier.save()
 
     return supplier
+
+
+def create_invoice() -> Invoice:
+
+    invoice_data = {
+        "invoice_number": "58785",
+        "value": "20000.00",
+        "description": "Manutenção de Servidores Linux CentOS",
+        "verified": False,
+        "validity": "2023-02-10",
+        "contract_id": 1,
+        "employee_id": 1,
+    }
+
+    return Invoice.objects.create(**invoice_data)
