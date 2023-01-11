@@ -27,6 +27,14 @@ response_get = client.patch("/api/employees/1/", {"name": "Manager Juninho"})
 class EmployeesViewsTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
+        cls.employeeNotAdmin = {
+            "name": "Cleitu",
+            "username": "cleitinhuu",
+            "email": "cleitinhu@mail.com ",
+            "password": "1234",
+            "is_superuser": False,
+        }
+
         cls.employees = [
             Employee.objects.create_user(
                 name=f"Employee {employee_id}",
@@ -37,6 +45,21 @@ class EmployeesViewsTest(APITestCase):
             )
             for employee_id in range(1, 6)
         ]
+
+    def test_create_common_user(self):
+        url = "/api/employees/"
+
+        response = self.client.post(url, self.employeeNotAdmin, format="json")
+        expected_status_code = 201
+        message = "verify if status code 201 is returning"
+
+        self.assertEqual(expected_status_code, response.status_code, message)
+
+        resulted_keys = response.json().keys()
+        expected_keys = ["id", "name", "username", "email", "password", "is_manager"]
+        message = "verify is all keys are being returned"
+        for key in expected_keys:
+            self.assertIn(key, resulted_keys, message)
 
     def test_can_list_all_employees(self):
         response = self.client.get("/api/employees/")
@@ -54,3 +77,24 @@ class EmployeesViewsTest(APITestCase):
         self.assertEqual(response.json()["id"], employee.id)
 
         self.assertEqual(EmployeeSerializer(instance=employee).data, response.data)
+
+    # cls.employees = [
+    #     Employee.objects.create_user(
+    #         name=f"Employee {employee_id}",
+    #         username=f"cleitinhu {employee_id}",
+    #         email=f"managermiaw{employee_id}@mail.com ",
+    #         password="1234",
+    #         is_superuser=True,
+    #     )
+    #     for employee_id in range(1, 6)
+    # ]
+
+    # cls.manager = [
+    #     Employee.objects.create_user(
+    #         name=f"John",
+    #         username=f"Johnas",
+    #         email=f"john@mail.com ",
+    #         password="1234",
+    #         is_superuser=True,
+    #     )
+    # ]
