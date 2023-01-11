@@ -34,21 +34,31 @@ def create_supplier() -> Supplier:
 
 
 def create_category() -> Category:
-    category_data_1 = {"name": "Manutenção de Servidores", "supplier": 1}
+    category_data_1 = {"name": "Manutenção de Servidores"}
 
     category_1 = Category.objects.create(**category_data_1)
 
     return category_1
 
 
-def create_contract() -> tuple[Contract]:
+def create_contract() -> Contract:
     contract_data_1 = {
         "duration": "2025-01-01",
         "value": "500000.00",
         "category_id": 1,
-        "supplier_id": 1,
     }
 
     contract_1 = Contract.objects.create(**contract_data_1)
 
     return contract_1
+
+
+def update_supplier() -> Supplier:
+
+    supplier = Supplier.objects.get(id=1)
+
+    setattr(supplier, "contract_id", 1)
+
+    supplier.save()
+
+    return supplier
