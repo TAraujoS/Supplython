@@ -1,7 +1,6 @@
 from django.test import TestCase
 from employees.models import Employee
 from departments.models import Department
-from model_bakery import baker
 
 
 class EmployeeModelTest(TestCase):

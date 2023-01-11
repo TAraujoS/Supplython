@@ -1,25 +1,6 @@
 from rest_framework.test import APITestCase
 from suppliers.models import Supplier
-from suppliers.serializers import SupplierSerializer
-from django.contrib.auth.models import AbstractUser
 from employees.models import Employee
-from rest_framework_simplejwt.tokens import RefreshToken
-import ipdb
-
-# def create_user_with_token() -> tuple[AbstractUser, RefreshToken]:
-    
-#     manager_data = {
-#         "name": "Manager",
-#         "username": "manager10",
-#         "email": "manager10@mail.com",
-#         "password": "1234",
-#         "is_superuser": True,
-#     }
-
-#     manager = Employee.objects.create_user(**manager_data)
-#     access = RefreshToken.for_user(manager)
-
-#     return manager, access
 
 
 class SuppliersViewsTest(APITestCase):
@@ -36,7 +17,7 @@ class SuppliersViewsTest(APITestCase):
             )
             for employee_id in range(1, 2)
         ]
-  
+
         cls.BASE_URL = "/api/suppliers/"
 
         cls.suppliers = [
@@ -49,7 +30,6 @@ class SuppliersViewsTest(APITestCase):
             for supplier_id in range(1, 6)
         ]
 
-
     def test_create_new_supplier_with_manager_token(self):
         token = self.client.post(
             "/api/employees/login/",
@@ -58,18 +38,25 @@ class SuppliersViewsTest(APITestCase):
         ).json()["access"]
 
         self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
-        response = self.client.post(self.BASE_URL, {"name": "Supplier9", "email": "supplier9@mail.com", "tel": "41991561679", "cnpj": "02777890691129"})
+        response = self.client.post(
+            self.BASE_URL,
+            {
+                "name": "Supplier9",
+                "email": "supplier9@mail.com",
+                "tel": "41991561679",
+                "cnpj": "02777890691129",
+            },
+        )
         expected_status_code = 201
-      
+
         self.assertEqual(expected_status_code, response.status_code)
 
         resulted_keys = response.json().keys()
-        expected_keys = ['id', 'name', 'email', 'tel', 'cnpj']
-        message = 'Verifique se todas as chaves obrigatórias são retornadas'
+        expected_keys = ["id", "name", "email", "tel", "cnpj"]
+        message = "Verifique se todas as chaves obrigatórias são retornadas"
 
         for key in expected_keys:
             self.assertIn(key, resulted_keys, message)
-
 
     def test_can_list_all_suppliers(self):
         token = self.client.post(
@@ -80,14 +67,9 @@ class SuppliersViewsTest(APITestCase):
 
         self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
         response = self.client.get(self.BASE_URL)
-        #expected_status_code = 200
 
         self.assertEqual(response.status_code, 200)
         self.assertEqual(len(self.suppliers), len(response.data))
-
-    #     # for supplier in self.suppliers:
-    #     #     self.assertIn(SupplierSerializer(instance=supplier).data, response.data)
-
 
     def test_can_list_a_specific_supplier(self):
         token = self.client.post(
@@ -99,8 +81,6 @@ class SuppliersViewsTest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
         supplier = self.suppliers[0]
         response = self.client.get(f"{self.BASE_URL}{supplier.id}/")
-        
+
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.json()["id"], supplier.id)
-
-    #     #self.assertEqual(SupplierSerializer(instance=supplier).data, response.data)

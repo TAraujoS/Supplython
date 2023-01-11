@@ -1,6 +1,5 @@
 from rest_framework.test import APITestCase
 from employees.models import Employee
-from employees.serializers import EmployeeSerializer
 
 
 class EmployeesViewsTest(APITestCase):

@@ -1,7 +1,5 @@
 from django.test import TestCase
 from suppliers.models import Supplier
-from departments.models import Department
-#from model_bakery import baker
 
 
 class SupplierModelTest(TestCase):
@@ -11,7 +9,7 @@ class SupplierModelTest(TestCase):
             "name": "Casa dos Papeis",
             "email": "papeis@mail.com",
             "tel": "41991561673",
-            "cnpj": "02777890691123"
+            "cnpj": "02777890691123",
         }
 
         cls.supplier = Supplier.objects.create(**cls.supplier_data)
