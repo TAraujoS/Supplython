@@ -2,15 +2,11 @@ from rest_framework import serializers
 from .models import Supplier
 from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
-<<<<<<< HEAD
-from .new_serializer import ContractNewSerializer, CategoryNewSerializer, DepartmentNewSerializer
-=======
-from .newSerialier import (
+from .new_serializer import (
     ContractNewSerializer,
     CategoryNewSerializer,
     DepartmentNewSerializer,
 )
->>>>>>> 1bb64f7ca08e16a981620eaed5fcc1675f84c0e8
 
 
 class SupplierSerializer(serializers.ModelSerializer):
