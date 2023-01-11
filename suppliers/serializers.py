@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 from .models import Supplier
 from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
-from .newSerialier import (
+from .new_serializer import (
     ContractNewSerializer,
     DepartmentNewSerializer,
 )
@@ -45,7 +45,7 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 
 class SupplierDetailSerializer(serializers.ModelSerializer):
-
+    
     contracts = ContractNewSerializer(read_only=True, many=True)
     departments = DepartmentNewSerializer(read_only=True, many=True)
     contract_id = serializers.IntegerField(write_only=True)
