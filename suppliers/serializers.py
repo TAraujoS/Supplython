@@ -46,11 +46,6 @@ class SupplierSerializer(serializers.ModelSerializer):
 
 class SupplierDetailSerializer(serializers.ModelSerializer):
     
-    # contracts   = ContractNewSerializer(many=True)
-    # categories   = CategoryNewSerializer(many=True)
-    # departments = DepartmentNewSerializer(many=True)
-    contract_id = serializers.IntegerField(write_only=True)
-
     contracts = ContractNewSerializer(read_only=True, many=True)
     departments = DepartmentNewSerializer(read_only=True, many=True)
     contract_id = serializers.IntegerField(write_only=True)

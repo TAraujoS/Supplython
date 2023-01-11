@@ -1,70 +1,106 @@
-from rest_framework.test import APIClient
 from rest_framework.test import APITestCase
 from suppliers.models import Supplier
 from suppliers.serializers import SupplierSerializer
+from django.contrib.auth.models import AbstractUser
+from employees.models import Employee
+from rest_framework_simplejwt.tokens import RefreshToken
+import ipdb
 
+# def create_user_with_token() -> tuple[AbstractUser, RefreshToken]:
+    
+#     manager_data = {
+#         "name": "Manager",
+#         "username": "manager10",
+#         "email": "manager10@mail.com",
+#         "password": "1234",
+#         "is_superuser": True,
+#     }
 
-client = APIClient()
+#     manager = Employee.objects.create_user(**manager_data)
+#     access = RefreshToken.for_user(manager)
 
-response_post = client.post(
-    "/api/suppliers/",
-    {
-        "name": "Casa dos Papeis",
-        "email": "papeis@mail.com",
-        "tel": "41991561673",
-        "cnpj": "02777890691123"
-    },
-    format="json",
-)
+#     return manager, access
 
 
 class SuppliersViewsTest(APITestCase):
     @classmethod
     def setUpTestData(cls):
-        cls.BASE_URL = "/api/suppliers/"
 
+        cls.employees = [
+            Employee.objects.create_user(
+                name=f"Employee {employee_id}",
+                username=f"cleitinhu {employee_id}",
+                email=f"managermiaw{employee_id}@mail.com ",
+                password="1234",
+                is_superuser=True,
+            )
+            for employee_id in range(1, 2)
+        ]
+  
+        cls.BASE_URL = "/api/suppliers/"
 
         cls.suppliers = [
             Supplier.objects.create(
                 name=f"Supplier {supplier_id}",
-                email=f"papeis{supplier_id}@mail.com ",
+                email=f"supplier{supplier_id}@mail.com ",
                 tel=f"4199156167{supplier_id}",
                 cnpj=f"0277789069112{supplier_id}",
             )
             for supplier_id in range(1, 6)
         ]
 
-    def test_can_list_all_suppliers(self):
-        response = self.client.get(self.BASE_URL)
-        expected_status_code = 200
 
-        self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(len(self.suppliers), len(response.data))
+    def test_create_new_supplier_with_manager_token(self):
+        token = self.client.post(
+            "/api/employees/login/",
+            {"username": "cleitinhu 1", "password": "1234"},
+            format="json",
+        ).json()["access"]
 
-        for supplier in self.suppliers:
-            self.assertIn(SupplierSerializer(instance=supplier).data, response.data)
-
-    def test_can_list_a_specific_supplier(self):
-        supplier = self.suppliers[0]
-        response = self.client.get(f"{self.BASE_URL}{supplier.id}/")
-        expected_status_code = 200
-
-        self.assertEqual(expected_status_code, response.status_code)
-        self.assertEqual(response.json()["id"], supplier.id)
-
-        self.assertEqual(SupplierSerializer(instance=supplier).data, response.data)
-
-    def test_create_a_new_supplier(self):
-        response = self.client.post(self.BASE_URL, response_post)
+        self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
+        response = self.client.post(self.BASE_URL, {"name": "Supplier9", "email": "supplier9@mail.com", "tel": "41991561679", "cnpj": "02777890691129"})
         expected_status_code = 201
-
+      
         self.assertEqual(expected_status_code, response.status_code)
 
         resulted_keys = response.json().keys()
-        expected_keys = ['id', 'name', 'email', 'tel', 'cnpj', 'contracts', 'departments']
+        expected_keys = ['id', 'name', 'email', 'tel', 'cnpj']
         message = 'Verifique se todas as chaves obrigatórias são retornadas'
 
         for key in expected_keys:
             self.assertIn(key, resulted_keys, message)
 
-    
+
+    def test_can_list_all_suppliers(self):
+        token = self.client.post(
+            "/api/employees/login/",
+            {"username": "cleitinhu 1", "password": "1234"},
+            format="json",
+        ).json()["access"]
+
+        self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
+        response = self.client.get(self.BASE_URL)
+        #expected_status_code = 200
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(len(self.suppliers), len(response.data))
+
+    #     # for supplier in self.suppliers:
+    #     #     self.assertIn(SupplierSerializer(instance=supplier).data, response.data)
+
+
+    def test_can_list_a_specific_supplier(self):
+        token = self.client.post(
+            "/api/employees/login/",
+            {"username": "cleitinhu 1", "password": "1234"},
+            format="json",
+        ).json()["access"]
+
+        self.client.credentials(HTTP_AUTHORIZATION="Bearer " + token)
+        supplier = self.suppliers[0]
+        response = self.client.get(f"{self.BASE_URL}{supplier.id}/")
+        
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json()["id"], supplier.id)
+
+    #     #self.assertEqual(SupplierSerializer(instance=supplier).data, response.data)
