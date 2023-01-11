@@ -1,10 +1,10 @@
 from rest_framework import serializers
+from django.shortcuts import get_object_or_404
 from .models import Supplier
 from contracts.models import Contract
 from rest_framework.validators import UniqueValidator
 from .new_serializer import (
     ContractNewSerializer,
-    CategoryNewSerializer,
     DepartmentNewSerializer,
 )
 
@@ -51,18 +51,40 @@ class SupplierDetailSerializer(serializers.ModelSerializer):
     # departments = DepartmentNewSerializer(many=True)
     contract_id = serializers.IntegerField(write_only=True)
 
+    contracts = ContractNewSerializer(read_only=True, many=True)
+    departments = DepartmentNewSerializer(read_only=True, many=True)
+    contract_id = serializers.IntegerField(write_only=True)
 
     class Meta:
         model = Supplier
-        fields = ["id", "name", "email", "tel", "cnpj",  "contract_id"]
+        fields = [
+            "id",
+            "name",
+            "email",
+            "tel",
+            "cnpj",
+            "contracts",
+            "departments",
+            "contract_id",
+        ]
 
-        read_only_fields = ["id", "name", "email", "tel", "cnpj"]
+        read_only_fields = [
+            "id",
+            "contracts",
+            "departments",
+        ]
 
-        # def update(self, instance: Supplier, validated_data):
+    def update(self, instance: Supplier, validated_data: dict) -> Supplier:
+        contract = validated_data.pop("contract_id", None)
 
-        #     for key, value in validated_data.items():
-        #         setattr(instance, key, value)
+        for key, value in validated_data.items():
+            setattr(instance, key, value)
 
-        #     instance.save()
+        find_contract = get_object_or_404(Contract, pk=contract)
 
-        #     return instance
+        if contract:
+            instance.contracts.add(find_contract)
+
+        instance.save()
+
+        return instance

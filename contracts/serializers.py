@@ -3,18 +3,17 @@ from .models import Contract
 
 from categories.serializers import CategorySerializer
 
+from suppliers.serializers import SupplierSerializer
+
 
 class ContractSerializer(serializers.ModelSerializer):
+    supplier = SupplierSerializer(read_only=True, many=True)
+    category = CategorySerializer(read_only=True)
+
     class Meta:
         model = Contract
-        fields = [
-            "id",
-            "duration",
-            "value",
-            "supplier_id",
-            "category_id",
-        ]
-        read_only_fields = ["id"]
+        fields = ["id", "duration", "value", "category_id", "category", "supplier"]
+        read_only_fields = ["id", "category", "supplier"]
 
     def create(self, validated_data):
         return Contract.objects.create(**validated_data)
@@ -30,18 +29,13 @@ class ContractSerializer(serializers.ModelSerializer):
 class DetailedContractSerializer(serializers.ModelSerializer):
     invoice_count = serializers.SerializerMethodField()
     category = CategorySerializer(read_only=True)
+    supplier = SupplierSerializer(read_only=True)
 
     def get_invoice_count(self, obj: Contract):
         return obj.invoices.count()
 
     class Meta:
         model = Contract
-        fields = [
-            "id",
-            "duration",
-            "value",
-            "invoice_count",
-            "category",
-        ]
+        fields = ["id", "duration", "value", "invoice_count", "category", "supplier"]
 
-        read_only_fields = ["id"]
+        read_only_fields = ["id", "supplier"]

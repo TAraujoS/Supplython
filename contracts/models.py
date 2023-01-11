@@ -15,4 +15,5 @@ class Contract(models.Model):
         "suppliers.Supplier",
         on_delete=models.CASCADE,
         related_name="contracts",
+        null=True,
     )

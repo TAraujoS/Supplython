@@ -71,7 +71,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/DetailCategory'
           description: ''
     patch:
       operationId: api_categories_partial_update
@@ -89,13 +89,13 @@ paths:
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/PatchedCategory'
+              $ref: '#/components/schemas/PatchedDetailCategory'
           application/x-www-form-urlencoded:
             schema:
-              $ref: '#/components/schemas/PatchedCategory'
+              $ref: '#/components/schemas/PatchedDetailCategory'
           multipart/form-data:
             schema:
-              $ref: '#/components/schemas/PatchedCategory'
+              $ref: '#/components/schemas/PatchedDetailCategory'
       security:
       - jwtAuth: []
       responses:
@@ -103,7 +103,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Category'
+                $ref: '#/components/schemas/DetailCategory'
           description: ''
     delete:
       operationId: api_categories_destroy
@@ -730,15 +730,9 @@ components:
         name:
           type: string
           maxLength: 50
-        supplier:
-          type: array
-          items:
-            $ref: '#/components/schemas/Supplier'
-          readOnly: true
       required:
       - id
       - name
-      - supplier
     Contract:
       type: object
       properties:
@@ -752,17 +746,41 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
-        supplier_id:
-          type: integer
-          readOnly: true
         category_id:
           type: integer
           readOnly: true
+        category:
+          allOf:
+          - $ref: '#/components/schemas/Category'
+          readOnly: true
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
+          readOnly: true
       required:
+      - category
       - category_id
       - duration
       - id
-      - supplier_id
+      - supplier
+      - value
+    ContractNew:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        duration:
+          type: string
+          format: date
+        value:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - duration
+      - id
       - value
     Department:
       type: object
@@ -786,6 +804,39 @@ components:
       - id
       - name
       - supplier
+    DepartmentNew:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        budget:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+      required:
+      - budget
+      - id
+      - name
+    DetailCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        supplier_id:
+          type: integer
+          writeOnly: true
+      required:
+      - id
+      - name
+      - supplier_id
     DetailEmployee:
       type: object
       properties:
@@ -812,6 +863,7 @@ components:
           type: boolean
         department_id:
           type: integer
+          writeOnly: true
         department:
           allOf:
           - $ref: '#/components/schemas/Department'
@@ -834,11 +886,12 @@ components:
         duration:
           type: string
           format: date
-          readOnly: true
         value:
           type: string
           format: decimal
           pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
+        invoice_count:
+          type: string
           readOnly: true
         category:
           allOf:
@@ -852,6 +905,7 @@ components:
       - category
       - duration
       - id
+      - invoice_count
       - supplier
       - value
     DetailedInvoice:
@@ -881,11 +935,7 @@ components:
           format: date
         contract:
           allOf:
-          - $ref: '#/components/schemas/Contract'
-          readOnly: true
-        supplier:
-          allOf:
-          - $ref: '#/components/schemas/Supplier'
+          - $ref: '#/components/schemas/DetailedContract'
           readOnly: true
         employee:
           allOf:
@@ -898,7 +948,6 @@ components:
       - employee
       - id
       - invoice_number
-      - supplier
       - validity
       - value
       - verified
@@ -942,6 +991,7 @@ components:
           readOnly: true
         invoice_number:
           type: string
+          maxLength: 10
         value:
           type: string
           format: decimal
@@ -961,9 +1011,6 @@ components:
         contract_id:
           type: integer
           readOnly: true
-        supplier_id:
-          type: integer
-          readOnly: true
         employee_id:
           type: integer
           readOnly: true
@@ -974,24 +1021,9 @@ components:
       - employee_id
       - id
       - invoice_number
-      - supplier_id
       - validity
       - value
       - verified
-    PatchedCategory:
-      type: object
-      properties:
-        id:
-          type: integer
-          readOnly: true
-        name:
-          type: string
-          maxLength: 50
-        supplier:
-          type: array
-          items:
-            $ref: '#/components/schemas/Supplier'
-          readOnly: true
     PatchedContract:
       type: object
       properties:
@@ -1005,11 +1037,17 @@ components:
           type: string
           format: decimal
           pattern: ^-?\d{0,8}(?:\.\d{0,2})?$
-        supplier_id:
-          type: integer
-          readOnly: true
         category_id:
           type: integer
+          readOnly: true
+        category:
+          allOf:
+          - $ref: '#/components/schemas/Category'
+          readOnly: true
+        supplier:
+          type: array
+          items:
+            $ref: '#/components/schemas/Supplier'
           readOnly: true
     PatchedDepartment:
       type: object
@@ -1028,6 +1066,18 @@ components:
           items:
             $ref: '#/components/schemas/Supplier'
           readOnly: true
+    PatchedDetailCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 50
+        supplier_id:
+          type: integer
+          writeOnly: true
     PatchedDetailEmployee:
       type: object
       properties:
@@ -1054,6 +1104,7 @@ components:
           type: boolean
         department_id:
           type: integer
+          writeOnly: true
         department:
           allOf:
           - $ref: '#/components/schemas/Department'
@@ -1066,6 +1117,7 @@ components:
           readOnly: true
         invoice_number:
           type: string
+          maxLength: 10
         value:
           type: string
           format: decimal
@@ -1085,9 +1137,6 @@ components:
         contract_id:
           type: integer
           readOnly: true
-        supplier_id:
-          type: integer
-          readOnly: true
         employee_id:
           type: integer
           readOnly: true
@@ -1099,17 +1148,30 @@ components:
           readOnly: true
         name:
           type: string
-          readOnly: true
+          maxLength: 50
         email:
           type: string
           format: email
-          readOnly: true
+          maxLength: 50
         tel:
           type: string
-          readOnly: true
+          maxLength: 20
         cnpj:
           type: string
+          maxLength: 15
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractNew'
           readOnly: true
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepartmentNew'
+          readOnly: true
+        contract_id:
+          type: integer
+          writeOnly: true
     Supplier:
       type: object
       properties:
@@ -1121,8 +1183,10 @@ components:
         email:
           type: string
           format: email
+          maxLength: 50
         tel:
           type: string
+          maxLength: 20
         cnpj:
           type: string
           maxLength: 15
@@ -1140,19 +1204,35 @@ components:
           readOnly: true
         name:
           type: string
-          readOnly: true
+          maxLength: 50
         email:
           type: string
           format: email
-          readOnly: true
+          maxLength: 50
         tel:
           type: string
-          readOnly: true
+          maxLength: 20
         cnpj:
           type: string
+          maxLength: 15
+        contracts:
+          type: array
+          items:
+            $ref: '#/components/schemas/ContractNew'
           readOnly: true
+        departments:
+          type: array
+          items:
+            $ref: '#/components/schemas/DepartmentNew'
+          readOnly: true
+        contract_id:
+          type: integer
+          writeOnly: true
       required:
       - cnpj
+      - contract_id
+      - contracts
+      - departments
       - email
       - id
       - name
