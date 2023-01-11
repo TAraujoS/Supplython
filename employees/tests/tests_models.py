@@ -1,7 +1,6 @@
 from django.test import TestCase
 from employees.models import Employee
 from departments.models import Department
-from model_bakery import baker
 
 
 class EmployeeModelTest(TestCase):
@@ -75,15 +74,3 @@ class EmployeeModelTestRelation(TestCase):
 
         for employee in self.employees:
             self.assertIs(employee.department, self.department)
-
-
-# class EmployeeTestModel(TestCase):
-#     @classmethod
-#     def setUp(cls):
-#         cls.employee = baker.make("employees.Employee")
-
-
-# class DepartmentTestModel(TestCase):
-#     @classmethod
-#     def setUp(cls):
-#         cls.department = baker.make("departments.Department")
