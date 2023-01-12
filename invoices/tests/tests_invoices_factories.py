@@ -16,15 +16,15 @@ def create_manager() -> tuple[Employee, RefreshToken]:
     }
 
     manager = Employee.objects.create_superuser(**manager_data)
-    token = RefreshToken.for_user(manager)
+    manager_token = RefreshToken.for_user(manager)
 
-    return manager, token
+    return manager, manager_token
 
 
 def create_supplier() -> Supplier:
     supplier_data_1 = {
         "name": "RTI Soluctions",
-        "email": "hikfm2@gmail.com",
+        "email": "rti.soluctions@mail.com",
         "tel": "4135233561",
         "cnpj": "27335286000101",
     }
@@ -42,11 +42,12 @@ def create_category() -> Category:
     return category_1
 
 
-def create_contract() -> Contract:
+def create_contract() -> tuple[Contract]:
     contract_data_1 = {
         "duration": "2025-01-01",
         "value": "500000.00",
         "category_id": 1,
+        "supplier_id": 1,
     }
 
     contract_1 = Contract.objects.create(**contract_data_1)
@@ -66,7 +67,6 @@ def update_supplier() -> Supplier:
 
 
 def create_invoice() -> Invoice:
-
     invoice_data = {
         "invoice_number": "58785",
         "value": "20000.00",

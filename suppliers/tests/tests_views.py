@@ -53,7 +53,7 @@ class SuppliersViewsTest(APITestCase):
 
         resulted_keys = response.json().keys()
         expected_keys = ["id", "name", "email", "tel", "cnpj"]
-        message = "Verifique se todas as chaves obrigatórias são retornadas"
+        message = "Check that all required keys are returned"
 
         for key in expected_keys:
             self.assertIn(key, resulted_keys, message)
