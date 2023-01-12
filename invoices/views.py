@@ -9,13 +9,13 @@ from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
 from employees.permissions import IsManager
 from contracts.models import Contract
 from employees.models import Employee
-from suppliers.models import Supplier
+from categories.models import Category
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from .models import Invoice
-from django.core.mail import send_mail
+from django.core.mail import  EmailMessage #send_mail,
 from django.conf import settings
-
+from utils.factory_pdf import factory_pdf
 
 @extend_schema_view(
     post=extend_schema(
@@ -55,13 +55,8 @@ class InvoiceView(generics.ListCreateAPIView):
         contract = get_object_or_404(Contract, id=self.request.data["contract_id"])
         employee = get_object_or_404(Employee, id=self.request.data["employee_id"])
 
-        send_mail(
-            subject="New Invoice Created",
-            message="Um novo invoice foi gerado no nome da sua empresa, verifique os dados que foram preenchidos!",
-            from_email=settings.EMAIL_HOST_USER,
-            recipient_list=[contract.supplier.email],
-            fail_silently=False,
-        )
+        factory_pdf(self.request.data, contract, employee)
+        
 
         return serializer.save(
             contract=contract,
