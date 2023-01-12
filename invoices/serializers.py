@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from .models import Invoice
-from rest_framework.validators import UniqueValidator
-from contracts.serializers import ContractSerializer, DetailedContractSerializer
-from suppliers.serializers import SupplierSerializer
+from contracts.serializers import DetailedContractSerializer
 from employees.serializers import EmployeeSerializer
 
 

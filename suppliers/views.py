@@ -57,12 +57,3 @@ class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = SupplierDetailSerializer
     queryset = Supplier.objects.all()
-
-    # def partial_update(self, request, *args, **kwargs):
-    #     supplier = get_object_or_404(Supplier, id=self.request.data["supplier"])
-
-    #     serializer = SupplierDetailSerializer(supplier, request.data, partial=True)
-    #     serializer.is_valid(raise_exception=True)
-    #     serializer.save()
-
-    #     return serializer.save(supplier=supplier)

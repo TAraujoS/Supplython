@@ -23,3 +23,4 @@ class Invoice(models.Model):
 
     def __repr__(self) -> str:
         return f"<[{self.id}] - {self.invoice_number}, {self.description}, {self.validity}, {self.description}>"
+    
