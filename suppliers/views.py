@@ -1,6 +1,7 @@
 from rest_framework import generics
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from drf_spectacular.utils import extend_schema_view, extend_schema
+from django.shortcuts import get_object_or_404
 
 from .models import Supplier
 from .serializers import SupplierSerializer, SupplierDetailSerializer
@@ -56,3 +57,12 @@ class SupplierDetailView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = SupplierDetailSerializer
     queryset = Supplier.objects.all()
+
+    # def partial_update(self, request, *args, **kwargs):
+    #     supplier = get_object_or_404(Supplier, id=self.request.data["supplier"])
+
+    #     serializer = SupplierDetailSerializer(supplier, request.data, partial=True)
+    #     serializer.is_valid(raise_exception=True)
+    #     serializer.save()
+
+    #     return serializer.save(supplier=supplier)
