@@ -1,1 +1,1303 @@
-{"_type":"export","__export_format":4,"__export_date":"2023-01-09T16:45:17.685Z","__export_source":"insomnia.desktop.app:v2022.7.1","resources":[{"_id":"req_e52e41f603f44686bd64e308af9330a1","parentId":"fld_492859f7924444849e313dfe8b46580d","modified":1673271912278,"created":1672837905190,"url":"https://supplython.onrender.com/api/employees/","name":"Create employee","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Employee\",\n\t\"username\": \"employee\",\n\t\"email\": \"employee@mail.com\",\n\t\"password\": \"1234\",\n\t\"is_manager\": false\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1672837609815,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_492859f7924444849e313dfe8b46580d","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672851322578,"created":1672837626513,"name":"Employees","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672842460049,"_type":"request_group"},{"_id":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","parentId":null,"modified":1672837596975,"created":1672837596975,"name":"Supplython","description":"","scope":"collection","_type":"workspace"},{"_id":"req_25691ef23b54437cbd552d4fd5638ce4","parentId":"fld_492859f7924444849e313dfe8b46580d","modified":1673272798256,"created":1672851338478,"url":"https://supplython.onrender.com/api/employees/","name":"Create manager","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Manager\",\n\t\"username\": \"manager\",\n\t\"email\": \"manager@mail.com\",\n\t\"password\": \"1234\",\n\t\"is_manager\": true\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1672837609790,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_c3dca178997544d1a0b5f13a4b824757","parentId":"fld_492859f7924444849e313dfe8b46580d","modified":1673271241438,"created":1672837609765,"url":"https://supplython.onrender.com/api/employees/","name":"List all employee","description":"","method":"GET","body":{},"parameters":[],"headers":[{"id":"pair_689b6a16b16d412e8a5ff7fd7ba085f7","name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","description":"","disabled":true},{"id":"pair_ffee99242d7246268c0fe6b19b4ca3f2","name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","description":"","disabled":false}],"authentication":{"type":"bearer","token":"{% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","prefix":"","disabled":true},"metaSortKey":-1672837609765,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e256b8d6a7ab44a5b52bd37ef16d08e1","parentId":"fld_492859f7924444849e313dfe8b46580d","modified":1673271247289,"created":1672837866416,"url":"https://supplython.onrender.com/api/employees/2/","name":"List by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_980424dbbda7479596b0309e77e5e6d8","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_a0bd08a2a584464989fffe48285b9a6b","disabled":false}],"authentication":{},"metaSortKey":-1672675064984.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d4dbea7545e645d8902cf44d10a9f223","parentId":"fld_492859f7924444849e313dfe8b46580d","modified":1673271251414,"created":1672838206075,"url":"https://supplython.onrender.com/api/employees/1/","name":"Update employee","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"department_id\": 1\n}"},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_a5ce914c52b14ca8936d02fe7ffcd123","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_3e95774f8cd847bfa00cb8c417c9f1a6"},{"name":"Content-Type","value":"application/json","id":"pair_99fc06ed52a848a8860f00a33f3ae060"}],"authentication":{},"metaSortKey":-1671862341083.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_56e137fc093944d9aab6023c95a0369f","parentId":"fld_d11d16eff6f945aabd249f3b08180693","modified":1673271920098,"created":1672842492104,"url":"https://supplython.onrender.com/api/employees/login/","name":"Login employee","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"username\": \"employee\",\n\t\"password\": \"1234\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1672431247814.375,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_d11d16eff6f945aabd249f3b08180693","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672842459999,"created":1672842459999,"name":"Login","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672842459999,"_type":"request_group"},{"_id":"req_cf7cb10d695a4590ad23060fadd71fc3","parentId":"fld_d11d16eff6f945aabd249f3b08180693","modified":1673282657673,"created":1672851367218,"url":"https://supplython.onrender.com/api/employees/login/","name":"Login manager","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"username\": \"manager\",\n\t\"password\": \"1234\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1672390611619.3125,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_f8f4490aaa1443b3bf0f7972d4bf7542","parentId":"fld_04e6d9925f4544bbb9fc71f95f1a082c","modified":1673281188183,"created":1672841045071,"url":"https://supplython.onrender.com/api/suppliers/","name":"Create suppliers","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"RTI Soluctions\",\n\t\"email\": \"rti.soluctions@mail.com\",\n\t\"tel\": \"4135233561\",\n\t\"cnpj\": \"04587875000101\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_974647ab379e46b0b4d23ccb1fd0eaff"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_3cdc4a4edd7a48db8a501e07b22eb139","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_2ff788fed154488886a4636a874d02f1","disabled":false}],"authentication":{},"metaSortKey":-1672329657376.7188,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_04e6d9925f4544bbb9fc71f95f1a082c","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1673265895817,"created":1672837660487,"name":"Suppliers","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672841039405,"_type":"request_group"},{"_id":"req_10beadd9f77f4ababad021a064f07d5b","parentId":"fld_04e6d9925f4544bbb9fc71f95f1a082c","modified":1673282628556,"created":1672840869333,"url":"https://supplython.onrender.com/api/suppliers/","name":"List all suppliers","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_1752d4006f424382b296c5aa025d238d","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_691202e8a64146ae93d0201e540f3aaf"}],"authentication":{},"metaSortKey":-1672319498277.9531,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_24fb6e6141704b2e8d508249f9ff5d67","parentId":"fld_04e6d9925f4544bbb9fc71f95f1a082c","modified":1673277416917,"created":1672840930965,"url":"https://supplython.onrender.com/api/suppliers/1/","name":"List suppliers by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_6142789df84842e9bb9d938dfd99b6ed","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_75bfc0d4f7714d9bb245fcb221d8cb7b"}],"authentication":{},"metaSortKey":-1672314418753.5703,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_963799b43d93446285d1cedc2f206fa5","parentId":"fld_04e6d9925f4544bbb9fc71f95f1a082c","modified":1673281290527,"created":1672840974973,"url":"https://supplython.onrender.com/api/suppliers/1/","name":"Update suppliers ","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"email\": \"rti@mail.com.br\"\n}"},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_aab8ca7d4fe04e729712fb97e40b0b04","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_26b1ce958930439ba6d788d0991477f0"},{"name":"Content-Type","value":"application/json","id":"pair_ba475d077f1d465a90090aa259bc4350"}],"authentication":{},"metaSortKey":-1672311878991.379,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e88093102c944cf8b120c5799fbf301c","parentId":"fld_04e6d9925f4544bbb9fc71f95f1a082c","modified":1673280970865,"created":1672841009349,"url":"https://supplython.onrender.com/api/suppliers/3/","name":"Destroy suppliers ","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_921a9b1cf9484fdc91271f63fb4f225d","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_46cdbff44259473184bfbf8ae73bfd92"}],"authentication":{},"metaSortKey":-1672310609110.2832,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_68a5fee95e9e4914804c48655cf92f90","parentId":"fld_2398861048bc420894d65fb3040fcb41","modified":1673277429424,"created":1672838292703,"url":"https://supplython.onrender.com/api/departments/","name":"Create department","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"T.I\",\n\t\"budget\": \"500000.80\",\n\t\"supplier\": 1\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_21f279b8849c48da910d956bd42c9f90"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_3baae5022a1844659a74160ee8585c1f"}],"authentication":{},"metaSortKey":-1672349975424.25,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_2398861048bc420894d65fb3040fcb41","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672841738772,"created":1672837671692,"name":"Departments","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672839618811,"_type":"request_group"},{"_id":"req_4af2c6bb1248487ba3e5c723e6aff81f","parentId":"fld_2398861048bc420894d65fb3040fcb41","modified":1673279453007,"created":1672838515911,"url":"https://supplython.onrender.com/api/departments/","name":"List department","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_cf854bb805af401989ffff73aca09869","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_039a80fa696744aa87359deb69334c5b","disabled":false}],"authentication":{},"metaSortKey":-1672268703034.125,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_f490d5b4f4384cbeb117daa2fe56e85a","parentId":"fld_2398861048bc420894d65fb3040fcb41","modified":1673279504501,"created":1672838545790,"url":"https://supplython.onrender.com/api/departments/1/","name":"List department by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_5cf6299e899a40269b1a6145e83bea2a","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_84c8bca4394a46ea9ecf6af6cfa666ad"}],"authentication":{},"metaSortKey":-1672228066839.0625,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_1dfcf1fb4aae4d48bf26aa8dab210dba","parentId":"fld_2398861048bc420894d65fb3040fcb41","modified":1673279512622,"created":1672838569442,"url":"https://supplython.onrender.com/api/departments/1/","name":"Update department","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Segurança do Tabalho\",\n\t\"budget\": \"15000.90\"\n\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_70746dd6c3b04a8b9220ca527513ec9e"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_e96dfd3ce9314e5ca20e7e6ce4a1132d","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_683a55a826d5487995b38d5106a315a8"}],"authentication":{},"metaSortKey":-1672228066789.0625,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0d24476b77624431b1962b5051a3b476","parentId":"fld_2398861048bc420894d65fb3040fcb41","modified":1673277441319,"created":1672838647708,"url":"https://supplython.onrender.com/api/departments/1/","name":"Destroy department","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"}],"authentication":{},"metaSortKey":-1672207748716.5312,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b110a25f691f4361a0ba2b8e681d81f1","parentId":"fld_62e354e5af8441f58e14eb0c78177721","modified":1673282643007,"created":1672841788131,"url":"https://supplython.onrender.com/api/categories/","name":"Create Categories","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Manutenção de Servidores\",\n\t\"supplier\": 1\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_64622addbf6e4c91a3603660bcab8aae"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_72b9ca55c84444c78107733ce0c5722a","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_327088bc949e49bb97b10e7941aa501b","disabled":false}],"authentication":{},"metaSortKey":-1672329657345.4688,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_62e354e5af8441f58e14eb0c78177721","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1673265903642,"created":1672839618786,"name":"Categories","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672839618801.625,"_type":"request_group"},{"_id":"req_d13f6a707b914fb48715c85c6b9c4e6f","parentId":"fld_62e354e5af8441f58e14eb0c78177721","modified":1673282646442,"created":1672841846043,"url":"https://supplython.onrender.com/api/categories/","name":"List all Categories ","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_0cb6d3b182204f4483211a10e05283f5","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_81ef4173f11b4773b0a3ce1b0e441c3e"}],"authentication":{},"metaSortKey":-1672329657340.7812,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_8abd193e66274fe5bdd003fe9e65ab50","parentId":"fld_62e354e5af8441f58e14eb0c78177721","modified":1673279544953,"created":1672841866674,"url":"https://supplython.onrender.com/api/categories/13/","name":"List  Categories by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_ef5c47508a0c40f08c4eb743b8a8eb29","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_d0b7420d4ac2487886fc6f0116a2ecd1"}],"authentication":{},"metaSortKey":-1672329657340,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e516e6016b744f548aed1e3415135fdc","parentId":"fld_62e354e5af8441f58e14eb0c78177721","modified":1673277469105,"created":1672841893683,"url":"https://supplython.onrender.com/api/categories/13/","name":"Update  Categories ","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"name\": \"Marketing\",\n\t\"supplier\": 1\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_d3334024bf194510bb8fb33b34330c06"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_3c2a1dcec0bf4d3c8dc6fc0fa5ef2a8b","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_a6a3b265c9044c47a529b129e8ca0a99"}],"authentication":{},"metaSortKey":-1672329657339.6094,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_825fcc9f79a948f6ad16572b3ec93922","parentId":"fld_62e354e5af8441f58e14eb0c78177721","modified":1673277486650,"created":1672841918963,"url":"https://supplython.onrender.com/api/categories/1/","name":"Destroy  Categories ","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"}],"authentication":{},"metaSortKey":-1672329657339.414,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b2977b522c424560924c9a4a8228633e","parentId":"fld_b1c8c32c81eb403c8760706d87457020","modified":1673282681016,"created":1672841941095,"url":"https://supplython.onrender.com/api/contract/","name":"Create Contract","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\"duration\": \"2025-01-01\", \n\"value\": \"500000.00\",\n\"category_id\": 1,\n\"supplier_id\": 1\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_75d35abc02d6445a88b4c16f00b34045"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_12dc18c6e4514b399ea425009c3a5787","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_58ffa75aa24e44ec93b658f29666f07d"}],"authentication":{},"metaSortKey":-1672839607956,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_b1c8c32c81eb403c8760706d87457020","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1673265906011,"created":1672839607981,"name":"Contracts","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672839618796.9375,"_type":"request_group"},{"_id":"req_a3e4f470551c42448e9941f82efcdb9f","parentId":"fld_b1c8c32c81eb403c8760706d87457020","modified":1673282676670,"created":1672841993816,"url":"https://supplython.onrender.com/api/contract/","name":"List all Contracts","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_337bd91e9ece40a8a4dbe6446d5b11c0","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_decebc7110a24fe68b1b0cc7d572346c"}],"authentication":{},"metaSortKey":-1672838109312.75,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_d8e60fd14bdb4508a5e2437de9fdfdb3","parentId":"fld_b1c8c32c81eb403c8760706d87457020","modified":1673277543470,"created":1672842014971,"url":"https://supplython.onrender.com/api/contract/1/","name":"List  Contract by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_b610cb7b538a426baa36264f7a00cd67","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_ba7306ce2a414728acef08fa701da1e3"}],"authentication":{},"metaSortKey":-1672837859538.875,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0317c0fe9e72448fbdf5c7452ba4d456","parentId":"fld_b1c8c32c81eb403c8760706d87457020","modified":1673279794197,"created":1672842041210,"url":"https://supplython.onrender.com/api/contract/1/","name":"Update  Contract","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"value\": \"450000.00\"\n}"},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_4c71c22ae7cb49a289c6b200302f0ea9","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_9bfde488426b41418780a581a8e482e3"},{"name":"Content-Type","value":"application/json"}],"authentication":{},"metaSortKey":-1672837734651.9375,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_0d7cb7bed9374a71ba09df73d2390411","parentId":"fld_b1c8c32c81eb403c8760706d87457020","modified":1673277550984,"created":1672842062227,"url":"https://supplython.onrender.com/api/contract/1/","name":"Destroy Contract","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_e046d9e4c5c1409b95bf4e1dd1fda5b9","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_b64e04e24c0d489dbd85305e1aaea0f5"}],"authentication":{},"metaSortKey":-1672837672208.4688,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_9a1aa206f36d49c0ac76d74b37d80192","parentId":"fld_678819ddbc48443cb29889f8c7506a8f","modified":1673282670418,"created":1672841354488,"url":"https://supplython.onrender.com/api/invoices/","name":"Create Invoice","description":"","method":"POST","body":{"mimeType":"application/json","text":"{\n\t\"invoice_number\": \"58785\",\n\t\"value\": \"20000.00\",\n\t\"description\": \"Manutenção de Servidores Linux CentOS\",\n\t\"verified\": false,\n\t\"validity\": \"2023-02-10\",\n\t\"contract_id\": 1,\n\t\"supplier_id\": 1,\n  \"employee_id\": 1\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_87c7a4e0fab344819b1f7a4866d7884d"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_e68f3b97b4e14deb98559050650b9aa0","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_8e19af5b1b0041758a80a384278b41f8"}],"authentication":{},"metaSortKey":-1672329657351.7188,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"fld_678819ddbc48443cb29889f8c7506a8f","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672841750127,"created":1672837642478,"name":"Invoices","description":"","environment":{},"environmentPropertyOrder":null,"metaSortKey":-1672839618792.25,"_type":"request_group"},{"_id":"req_7ff3124279724388a2f9f801eae13d2b","parentId":"fld_678819ddbc48443cb29889f8c7506a8f","modified":1673277559072,"created":1672841581421,"url":"https://supplython.onrender.com/api/invoices/","name":"List all Invoices","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_8911b6706c3a45059495172757e830b7","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_4a635209959041aab70288bd2567b379","disabled":false}],"authentication":{},"metaSortKey":-1672329657332.9688,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_ee62c60ffd0a4efe9d9e29842becbca5","parentId":"fld_678819ddbc48443cb29889f8c7506a8f","modified":1673277563074,"created":1672841600270,"url":"https://supplython.onrender.com/api/invoices/1/","name":"List Invoices by ID","description":"","method":"GET","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_ca5c3918202642bca0daa2be123945d7","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_02969d93a3f24addac492ecacb90cfb8"}],"authentication":{},"metaSortKey":-1672329657329.8438,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_e8258df0103c46c4a692a75f65241a17","parentId":"fld_678819ddbc48443cb29889f8c7506a8f","modified":1673277566930,"created":1672841636025,"url":"https://supplython.onrender.com/api/invoices/1/","name":"Update Invoices","description":"","method":"PATCH","body":{"mimeType":"application/json","text":"{\n\t\"value\": \"10.00\",\n\t\"description\": \"Manutenção Geral\"\n}"},"parameters":[],"headers":[{"name":"Content-Type","value":"application/json","id":"pair_e8eac22caf0d4ed6ad4d7cde91561c9c"},{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_7462e2b7d294465c86d3dc8318d4cfa7","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_8358459208d848cd8a20964983d508a8"}],"authentication":{},"metaSortKey":-1672329657328.2812,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"req_b156ff446de44c4f9cea9ace2fb1120d","parentId":"fld_678819ddbc48443cb29889f8c7506a8f","modified":1673277570218,"created":1672841664748,"url":"https://supplython.onrender.com/api/invoices/1/","name":"Destroy Invoices","description":"","method":"DELETE","body":{},"parameters":[],"headers":[{"name":"Authorization","value":"Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_de4a28cbbca24f0a96f5b74059ccbe21","disabled":true},{"name":"Authorization","value":"Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}","id":"pair_fe445471435d4cbeae98c87523ca24c8"}],"authentication":{},"metaSortKey":-1672329657327.5,"isPrivate":false,"settingStoreCookies":true,"settingSendCookies":true,"settingDisableRenderRequestBody":false,"settingEncodeUrl":true,"settingRebuildPath":true,"settingFollowRedirects":"global","_type":"request"},{"_id":"env_421b0a0f26f79188fef7a55ccd651e309a395259","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672837596997,"created":1672837596997,"name":"Base Environment","data":{},"dataPropertyOrder":null,"color":null,"isPrivate":false,"metaSortKey":1672837596997,"_type":"environment"},{"_id":"jar_56dc99331112535133969be7905ee0fb0ef279f8","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672837597004,"created":1672837597004,"name":"Default Jar","cookies":[],"_type":"cookie_jar"},{"_id":"spc_917d1bcc76fd403e9acdb2265f705f63","parentId":"wrk_b434ab3e8f84412eafd4f94134e2b0dc","modified":1672837596980,"created":1672837596980,"fileName":"Supplython","contents":"","contentType":"yaml","_type":"api_spec"}]}
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2023-01-11T12:53:58.230Z",
+  "__export_source": "insomnia.desktop.app:v2022.7.1",
+  "resources": [
+    {
+      "_id": "req_e52e41f603f44686bd64e308af9330a1",
+      "parentId": "fld_492859f7924444849e313dfe8b46580d",
+      "modified": 1673271912278,
+      "created": 1672837905190,
+      "url": "https://supplython.onrender.com/api/employees/",
+      "name": "Create employee",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Employee\",\n\t\"username\": \"employee\",\n\t\"email\": \"employee@mail.com\",\n\t\"password\": \"1234\",\n\t\"is_manager\": false\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1672837609815,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_492859f7924444849e313dfe8b46580d",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672851322578,
+      "created": 1672837626513,
+      "name": "Employees",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672842460049,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "parentId": null,
+      "modified": 1672837596975,
+      "created": 1672837596975,
+      "name": "Supplython",
+      "description": "",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "req_25691ef23b54437cbd552d4fd5638ce4",
+      "parentId": "fld_492859f7924444849e313dfe8b46580d",
+      "modified": 1673272798256,
+      "created": 1672851338478,
+      "url": "https://supplython.onrender.com/api/employees/",
+      "name": "Create manager",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Manager\",\n\t\"username\": \"manager\",\n\t\"email\": \"manager@mail.com\",\n\t\"password\": \"1234\",\n\t\"is_manager\": true\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1672837609790,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_c3dca178997544d1a0b5f13a4b824757",
+      "parentId": "fld_492859f7924444849e313dfe8b46580d",
+      "modified": 1673271241438,
+      "created": 1672837609765,
+      "url": "https://supplython.onrender.com/api/employees/",
+      "name": "List all employee",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "id": "pair_689b6a16b16d412e8a5ff7fd7ba085f7",
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "description": "",
+          "disabled": true
+        },
+        {
+          "id": "pair_ffee99242d7246268c0fe6b19b4ca3f2",
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "description": "",
+          "disabled": false
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+        "prefix": "",
+        "disabled": true
+      },
+      "metaSortKey": -1672837609765,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e256b8d6a7ab44a5b52bd37ef16d08e1",
+      "parentId": "fld_492859f7924444849e313dfe8b46580d",
+      "modified": 1673271247289,
+      "created": 1672837866416,
+      "url": "https://supplython.onrender.com/api/employees/2/",
+      "name": "List by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_980424dbbda7479596b0309e77e5e6d8",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_a0bd08a2a584464989fffe48285b9a6b",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672675064984.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d4dbea7545e645d8902cf44d10a9f223",
+      "parentId": "fld_492859f7924444849e313dfe8b46580d",
+      "modified": 1673271251414,
+      "created": 1672838206075,
+      "url": "https://supplython.onrender.com/api/employees/1/",
+      "name": "Update employee",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"department_id\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_a5ce914c52b14ca8936d02fe7ffcd123",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_3e95774f8cd847bfa00cb8c417c9f1a6"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_99fc06ed52a848a8860f00a33f3ae060"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1671862341083.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_56e137fc093944d9aab6023c95a0369f",
+      "parentId": "fld_d11d16eff6f945aabd249f3b08180693",
+      "modified": 1673271920098,
+      "created": 1672842492104,
+      "url": "https://supplython.onrender.com/api/employees/login/",
+      "name": "Login employee",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"employee\",\n\t\"password\": \"1234\"\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1672431247814.375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_d11d16eff6f945aabd249f3b08180693",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672842459999,
+      "created": 1672842459999,
+      "name": "Login",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672842459999,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_cf7cb10d695a4590ad23060fadd71fc3",
+      "parentId": "fld_d11d16eff6f945aabd249f3b08180693",
+      "modified": 1673282657673,
+      "created": 1672851367218,
+      "url": "https://supplython.onrender.com/api/employees/login/",
+      "name": "Login manager",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"username\": \"manager\",\n\t\"password\": \"1234\"\n}"
+      },
+      "parameters": [],
+      "headers": [{ "name": "Content-Type", "value": "application/json" }],
+      "authentication": {},
+      "metaSortKey": -1672390611619.3125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f8f4490aaa1443b3bf0f7972d4bf7542",
+      "parentId": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "modified": 1673281188183,
+      "created": 1672841045071,
+      "url": "https://supplython.onrender.com/api/suppliers/",
+      "name": "Create suppliers",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"RTI Soluctions\",\n\t\"email\": \"rti.soluctions@mail.com\",\n\t\"tel\": \"4135233561\",\n\t\"cnpj\": \"04587875000101\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_974647ab379e46b0b4d23ccb1fd0eaff"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_3cdc4a4edd7a48db8a501e07b22eb139",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_2ff788fed154488886a4636a874d02f1",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657376.7188,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1673265895817,
+      "created": 1672837660487,
+      "name": "Suppliers",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672841039405,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_10beadd9f77f4ababad021a064f07d5b",
+      "parentId": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "modified": 1673282628556,
+      "created": 1672840869333,
+      "url": "https://supplython.onrender.com/api/suppliers/",
+      "name": "List all suppliers",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_1752d4006f424382b296c5aa025d238d",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_691202e8a64146ae93d0201e540f3aaf"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672319498277.9531,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_24fb6e6141704b2e8d508249f9ff5d67",
+      "parentId": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "modified": 1673277416917,
+      "created": 1672840930965,
+      "url": "https://supplython.onrender.com/api/suppliers/1/",
+      "name": "List suppliers by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_6142789df84842e9bb9d938dfd99b6ed",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_75bfc0d4f7714d9bb245fcb221d8cb7b"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672314418753.5703,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_963799b43d93446285d1cedc2f206fa5",
+      "parentId": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "modified": 1673388518516,
+      "created": 1672840974973,
+      "url": "https://supplython.onrender.com/api/suppliers/1/",
+      "name": "Update suppliers ",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"email\": \"rti@mail.com.br\",\n\t\"contract_id\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_aab8ca7d4fe04e729712fb97e40b0b04",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_26b1ce958930439ba6d788d0991477f0"
+        },
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_ba475d077f1d465a90090aa259bc4350"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672311878991.379,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e88093102c944cf8b120c5799fbf301c",
+      "parentId": "fld_04e6d9925f4544bbb9fc71f95f1a082c",
+      "modified": 1673280970865,
+      "created": 1672841009349,
+      "url": "https://supplython.onrender.com/api/suppliers/3/",
+      "name": "Destroy suppliers ",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_921a9b1cf9484fdc91271f63fb4f225d",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_46cdbff44259473184bfbf8ae73bfd92"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672310609110.2832,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_68a5fee95e9e4914804c48655cf92f90",
+      "parentId": "fld_2398861048bc420894d65fb3040fcb41",
+      "modified": 1673277429424,
+      "created": 1672838292703,
+      "url": "https://supplython.onrender.com/api/departments/",
+      "name": "Create department",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"T.I\",\n\t\"budget\": \"500000.80\",\n\t\"supplier\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_21f279b8849c48da910d956bd42c9f90"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_3baae5022a1844659a74160ee8585c1f"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672349975424.25,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_2398861048bc420894d65fb3040fcb41",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672841738772,
+      "created": 1672837671692,
+      "name": "Departments",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672839618811,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_4af2c6bb1248487ba3e5c723e6aff81f",
+      "parentId": "fld_2398861048bc420894d65fb3040fcb41",
+      "modified": 1673279453007,
+      "created": 1672838515911,
+      "url": "https://supplython.onrender.com/api/departments/",
+      "name": "List department",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_cf854bb805af401989ffff73aca09869",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_039a80fa696744aa87359deb69334c5b",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672268703034.125,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_f490d5b4f4384cbeb117daa2fe56e85a",
+      "parentId": "fld_2398861048bc420894d65fb3040fcb41",
+      "modified": 1673279504501,
+      "created": 1672838545790,
+      "url": "https://supplython.onrender.com/api/departments/1/",
+      "name": "List department by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_5cf6299e899a40269b1a6145e83bea2a",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_84c8bca4394a46ea9ecf6af6cfa666ad"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672228066839.0625,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_1dfcf1fb4aae4d48bf26aa8dab210dba",
+      "parentId": "fld_2398861048bc420894d65fb3040fcb41",
+      "modified": 1673279512622,
+      "created": 1672838569442,
+      "url": "https://supplython.onrender.com/api/departments/1/",
+      "name": "Update department",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Segurança do Tabalho\",\n\t\"budget\": \"15000.90\"\n\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_70746dd6c3b04a8b9220ca527513ec9e"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_e96dfd3ce9314e5ca20e7e6ce4a1132d",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_683a55a826d5487995b38d5106a315a8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672228066789.0625,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0d24476b77624431b1962b5051a3b476",
+      "parentId": "fld_2398861048bc420894d65fb3040fcb41",
+      "modified": 1673277441319,
+      "created": 1672838647708,
+      "url": "https://supplython.onrender.com/api/departments/1/",
+      "name": "Destroy department",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672207748716.5312,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b110a25f691f4361a0ba2b8e681d81f1",
+      "parentId": "fld_62e354e5af8441f58e14eb0c78177721",
+      "modified": 1673388533719,
+      "created": 1672841788131,
+      "url": "https://supplython.onrender.com/api/categories/",
+      "name": "Create Categories",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Manutenção de Servidores\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_64622addbf6e4c91a3603660bcab8aae"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_72b9ca55c84444c78107733ce0c5722a",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_327088bc949e49bb97b10e7941aa501b",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657345.4688,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_62e354e5af8441f58e14eb0c78177721",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1673265903642,
+      "created": 1672839618786,
+      "name": "Categories",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672839618801.625,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_d13f6a707b914fb48715c85c6b9c4e6f",
+      "parentId": "fld_62e354e5af8441f58e14eb0c78177721",
+      "modified": 1673282646442,
+      "created": 1672841846043,
+      "url": "https://supplython.onrender.com/api/categories/",
+      "name": "List all Categories ",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_0cb6d3b182204f4483211a10e05283f5",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_81ef4173f11b4773b0a3ce1b0e441c3e"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657340.7812,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_8abd193e66274fe5bdd003fe9e65ab50",
+      "parentId": "fld_62e354e5af8441f58e14eb0c78177721",
+      "modified": 1673279544953,
+      "created": 1672841866674,
+      "url": "https://supplython.onrender.com/api/categories/13/",
+      "name": "List  Categories by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_ef5c47508a0c40f08c4eb743b8a8eb29",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_d0b7420d4ac2487886fc6f0116a2ecd1"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657340,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e516e6016b744f548aed1e3415135fdc",
+      "parentId": "fld_62e354e5af8441f58e14eb0c78177721",
+      "modified": 1673388540439,
+      "created": 1672841893683,
+      "url": "https://supplython.onrender.com/api/categories/13/",
+      "name": "Update  Categories ",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"name\": \"Marketing\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_d3334024bf194510bb8fb33b34330c06"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_3c2a1dcec0bf4d3c8dc6fc0fa5ef2a8b",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_a6a3b265c9044c47a529b129e8ca0a99"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657339.6094,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_825fcc9f79a948f6ad16572b3ec93922",
+      "parentId": "fld_62e354e5af8441f58e14eb0c78177721",
+      "modified": 1673277486650,
+      "created": 1672841918963,
+      "url": "https://supplython.onrender.com/api/categories/1/",
+      "name": "Destroy  Categories ",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657339.414,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b2977b522c424560924c9a4a8228633e",
+      "parentId": "fld_b1c8c32c81eb403c8760706d87457020",
+      "modified": 1673388556007,
+      "created": 1672841941095,
+      "url": "https://supplython.onrender.com/api/contract/",
+      "name": "Create Contract",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\"duration\": \"2025-01-01\", \n\"value\": \"500000.00\",\n\"category_id\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_75d35abc02d6445a88b4c16f00b34045"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_12dc18c6e4514b399ea425009c3a5787",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_58ffa75aa24e44ec93b658f29666f07d"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672839607956,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_b1c8c32c81eb403c8760706d87457020",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1673265906011,
+      "created": 1672839607981,
+      "name": "Contracts",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672839618796.9375,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_a3e4f470551c42448e9941f82efcdb9f",
+      "parentId": "fld_b1c8c32c81eb403c8760706d87457020",
+      "modified": 1673282676670,
+      "created": 1672841993816,
+      "url": "https://supplython.onrender.com/api/contract/",
+      "name": "List all Contracts",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_337bd91e9ece40a8a4dbe6446d5b11c0",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_decebc7110a24fe68b1b0cc7d572346c"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672838109312.75,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d8e60fd14bdb4508a5e2437de9fdfdb3",
+      "parentId": "fld_b1c8c32c81eb403c8760706d87457020",
+      "modified": 1673277543470,
+      "created": 1672842014971,
+      "url": "https://supplython.onrender.com/api/contract/1/",
+      "name": "List  Contract by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_b610cb7b538a426baa36264f7a00cd67",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_ba7306ce2a414728acef08fa701da1e3"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672837859538.875,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0317c0fe9e72448fbdf5c7452ba4d456",
+      "parentId": "fld_b1c8c32c81eb403c8760706d87457020",
+      "modified": 1673279794197,
+      "created": 1672842041210,
+      "url": "https://supplython.onrender.com/api/contract/1/",
+      "name": "Update  Contract",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"value\": \"450000.00\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_4c71c22ae7cb49a289c6b200302f0ea9",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_9bfde488426b41418780a581a8e482e3"
+        },
+        { "name": "Content-Type", "value": "application/json" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672837734651.9375,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0d7cb7bed9374a71ba09df73d2390411",
+      "parentId": "fld_b1c8c32c81eb403c8760706d87457020",
+      "modified": 1673277550984,
+      "created": 1672842062227,
+      "url": "https://supplython.onrender.com/api/contract/1/",
+      "name": "Destroy Contract",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_e046d9e4c5c1409b95bf4e1dd1fda5b9",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_b64e04e24c0d489dbd85305e1aaea0f5"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672837672208.4688,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_9a1aa206f36d49c0ac76d74b37d80192",
+      "parentId": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "modified": 1673388481805,
+      "created": 1672841354488,
+      "url": "https://supplython.onrender.com/api/invoices/",
+      "name": "Create Invoice",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"invoice_number\": \"58785\",\n\t\"value\": \"20000.00\",\n\t\"description\": \"Manutenção de Servidores Linux CentOS\",\n\t\"verified\": false,\n\t\"validity\": \"2023-02-10\",\n\t\"contract_id\": 1,\n  \"employee_id\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_87c7a4e0fab344819b1f7a4866d7884d"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_e68f3b97b4e14deb98559050650b9aa0",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_8e19af5b1b0041758a80a384278b41f8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657351.7188,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672841750127,
+      "created": 1672837642478,
+      "name": "Invoices",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1672839618792.25,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_7ff3124279724388a2f9f801eae13d2b",
+      "parentId": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "modified": 1673277559072,
+      "created": 1672841581421,
+      "url": "https://supplython.onrender.com/api/invoices/",
+      "name": "List all Invoices",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_8911b6706c3a45059495172757e830b7",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_4a635209959041aab70288bd2567b379",
+          "disabled": false
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657332.9688,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_ee62c60ffd0a4efe9d9e29842becbca5",
+      "parentId": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "modified": 1673277563074,
+      "created": 1672841600270,
+      "url": "https://supplython.onrender.com/api/invoices/1/",
+      "name": "List Invoices by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_ca5c3918202642bca0daa2be123945d7",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_02969d93a3f24addac492ecacb90cfb8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657329.8438,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_e8258df0103c46c4a692a75f65241a17",
+      "parentId": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "modified": 1673277566930,
+      "created": 1672841636025,
+      "url": "https://supplython.onrender.com/api/invoices/1/",
+      "name": "Update Invoices",
+      "description": "",
+      "method": "PATCH",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n\t\"value\": \"10.00\",\n\t\"description\": \"Manutenção Geral\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_e8eac22caf0d4ed6ad4d7cde91561c9c"
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_7462e2b7d294465c86d3dc8318d4cfa7",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_8358459208d848cd8a20964983d508a8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657328.2812,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_b156ff446de44c4f9cea9ace2fb1120d",
+      "parentId": "fld_678819ddbc48443cb29889f8c7506a8f",
+      "modified": 1673277570218,
+      "created": 1672841664748,
+      "url": "https://supplython.onrender.com/api/invoices/1/",
+      "name": "Destroy Invoices",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_56e137fc093944d9aab6023c95a0369f', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_de4a28cbbca24f0a96f5b74059ccbe21",
+          "disabled": true
+        },
+        {
+          "name": "Authorization",
+          "value": "Bearer {% response 'body', 'req_cf7cb10d695a4590ad23060fadd71fc3', 'b64::JC5hY2Nlc3M=::46b', 'always', 60 %}",
+          "id": "pair_fe445471435d4cbeae98c87523ca24c8"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1672329657327.5,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_421b0a0f26f79188fef7a55ccd651e309a395259",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672837596997,
+      "created": 1672837596997,
+      "name": "Base Environment",
+      "data": {},
+      "dataPropertyOrder": null,
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1672837596997,
+      "_type": "environment"
+    },
+    {
+      "_id": "jar_56dc99331112535133969be7905ee0fb0ef279f8",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672837597004,
+      "created": 1672837597004,
+      "name": "Default Jar",
+      "cookies": [],
+      "_type": "cookie_jar"
+    },
+    {
+      "_id": "spc_917d1bcc76fd403e9acdb2265f705f63",
+      "parentId": "wrk_b434ab3e8f84412eafd4f94134e2b0dc",
+      "modified": 1672837596980,
+      "created": 1672837596980,
+      "fileName": "Supplython",
+      "contents": "",
+      "contentType": "yaml",
+      "_type": "api_spec"
+    }
+  ]
+}
