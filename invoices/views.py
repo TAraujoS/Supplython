@@ -9,13 +9,8 @@ from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
 from employees.permissions import IsManager
 from contracts.models import Contract
 from employees.models import Employee
-from categories.models import Category
-from rest_framework import generics
-from rest_framework.exceptions import ValidationError
-from .models import Invoice
-from django.core.mail import  EmailMessage #send_mail,
-from django.conf import settings
 from utils.factory_pdf import factory_pdf
+
 
 @extend_schema_view(
     post=extend_schema(
@@ -56,7 +51,6 @@ class InvoiceView(generics.ListCreateAPIView):
         employee = get_object_or_404(Employee, id=self.request.data["employee_id"])
 
         factory_pdf(self.request.data, contract, employee)
-        
 
         return serializer.save(
             contract=contract,
