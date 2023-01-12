@@ -9,15 +9,13 @@ from .serializers import InvoiceSerializer, DetailedInvoiceSerializer
 from employees.permissions import IsManager
 from contracts.models import Contract
 from employees.models import Employee
-from suppliers.models import Supplier
+from categories.models import Category
 from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from .models import Invoice
 from django.core.mail import  EmailMessage #send_mail,
 from django.conf import settings
-from fpdf import FPDF
-import ipdb
-
+from utils.factory_pdf import factory_pdf
 
 @extend_schema_view(
     post=extend_schema(
@@ -56,42 +54,8 @@ class InvoiceView(generics.ListCreateAPIView):
 
         contract = get_object_or_404(Contract, id=self.request.data["contract_id"])
         employee = get_object_or_404(Employee, id=self.request.data["employee_id"])
-        # data_pdf = Invoice.objects.all() #lista
-        # ipdb.set_trace()
 
-        pdf = FPDF()
-        pdf.add_page()
-        pdf.set_font("helvetica", "", 14)
-        pdf.multi_cell(txt="Supplython Invoices", h=1, align= "C", w=0)
-        pdf.ln(10)
-        # pdf.multi_cell(txt=f"ID {self.request.data['id']}", w=0)
-        pdf.ln(2)
-        pdf.multi_cell(txt=f"INVOICE_NUMBER = {self.request.data['invoice_number']}", w=0)
-        pdf.ln(2)
-        pdf.multi_cell(txt=f"VALUE = {self.request.data['value']}", w=0)
-        pdf.ln(2)
-        pdf.multi_cell(txt=f"DESCRIPTION = {self.request.data['description']}", w=0)
-        pdf.ln(2)
-        pdf.multi_cell(txt=f"CONTRACT = {contract}", w=0)
-        pdf.ln(2)
-        pdf.multi_cell(txt=f"VALIDITY = {self.request.data['validity']}", w=0)
-        pdf.ln(2)
-
-        # for item in data_pdf:
-        #     pdf.multi_cell(txt=f"{item}", w=0 )
-        
-        pdf.output("invoice.pdf")
-        
-        email = EmailMessage(
-            subject= "New Invoice Created",
-            body= "A new invoice was generated in the name of your company, check the data that were filled in !",
-            from_email=settings.EMAIL_HOST_USER,
-            to=[contract.supplier.email],
-            
-        )
-        email.attach_file("invoice.pdf")
-        email.send(fail_silently=False)
-
+        factory_pdf(self.request.data, contract, employee)
         
 
         return serializer.save(
